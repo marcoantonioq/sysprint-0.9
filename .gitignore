@@ -1,7 +1,5 @@
 # User specific & automatically generated files #
 #################################################
-/Config/database.php
-/Config/email.php
 /Config/app.json
 *.mo
 *.log
