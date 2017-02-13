@@ -13,8 +13,13 @@ class UpdateController extends AppController {
 		$this->set('title_for_layout', __(ucfirst('Update')));
 	}
 
+	public function index() {	    
+	    $command = "cd ".ROOT."/app/; git tag ";
+		exec($command, $version);
+		$this->set(compact('version'));
+	}
 
-	public function index() {
+	public function sync() {
 		if ($this->request->is('post')) {
 			
 			// Backup
@@ -25,14 +30,9 @@ class UpdateController extends AppController {
 			exec( "cd ".ROOT."/app/ && git reset --hard HEAD && git pull" );
 
 			echo $this->Session->setFlash('Atualização completa!', 'layout/success');
+			return $this->redirect(array('action' => 'index'));
 	    }
-	    
-	    $command = "cd ".ROOT."/app/; git tag ";
-	    pr($command);
-		exec($command, $version, $error);
-		pr($version);
 
-		$this->set(compact('version'));
 	}
 
 }
