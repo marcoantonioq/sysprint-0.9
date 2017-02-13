@@ -1,0 +1,117 @@
+.element-animation{
+  animation: animationFrames linear 5s;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  -webkit-animation: animationFrames linear 5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: animationFrames linear 5s;
+  -moz-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50%;
+  -o-animation: animationFrames linear 5s;
+  -o-animation-iteration-count: infinite;
+  -o-transform-origin: 50% 50%;
+  -ms-animation: animationFrames linear 5s;
+  -ms-animation-iteration-count: infinite;
+  -ms-transform-origin: 50% 50%;
+}
+
+@keyframes animationFrames{
+  0% {
+    transform:  rotate(0deg) ;
+  }
+  4% {
+    transform:  rotate(-17deg) ;
+  }
+  11% {
+    transform:  rotate(23deg) ;
+  }
+  16% {
+    transform:  rotate(0deg) ;
+  }
+  25% {
+  }
+  100% {
+    transform:  rotate(0deg) ;
+  }
+}
+
+@-moz-keyframes animationFrames{
+  0% {
+    -moz-transform:  rotate(0deg) ;
+  }
+  4% {
+    -moz-transform:  rotate(-17deg) ;
+  }
+  11% {
+    -moz-transform:  rotate(23deg) ;
+  }
+  16% {
+    -moz-transform:  rotate(0deg) ;
+  }
+  25% {
+  }
+  100% {
+    -moz-transform:  rotate(0deg) ;
+  }
+}
+
+@-webkit-keyframes animationFrames {
+  0% {
+    -webkit-transform:  rotate(0deg) ;
+  }
+  4% {
+    -webkit-transform:  rotate(-17deg) ;
+  }
+  11% {
+    -webkit-transform:  rotate(23deg) ;
+  }
+  16% {
+    -webkit-transform:  rotate(0deg) ;
+  }
+  25% {
+  }
+  100% {
+    -webkit-transform:  rotate(0deg) ;
+  }
+}
+
+@-o-keyframes animationFrames {
+  0% {
+    -o-transform:  rotate(0deg) ;
+  }
+  4% {
+    -o-transform:  rotate(-17deg) ;
+  }
+  11% {
+    -o-transform:  rotate(23deg) ;
+  }
+  16% {
+    -o-transform:  rotate(0deg) ;
+  }
+  25% {
+  }
+  100% {
+    -o-transform:  rotate(0deg) ;
+  }
+}
+
+@-ms-keyframes animationFrames {
+  0% {
+    -ms-transform:  rotate(0deg) ;
+  }
+  4% {
+    -ms-transform:  rotate(-17deg) ;
+  }
+  11% {
+    -ms-transform:  rotate(23deg) ;
+  }
+  16% {
+    -ms-transform:  rotate(0deg) ;
+  }
+  25% {
+  }
+  100% {
+    -ms-transform:  rotate(0deg) ;
+  }
+}

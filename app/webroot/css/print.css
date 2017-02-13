@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+.borderGreen {
+	border: 1px solid #90C64C;
+}
+
+.profile {
+    width: auto;
+    position: relative;
+    margin: 15px 5px;
+    float: left;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box
+}
+
+.profile > tbody > tr > td {
+	padding: 10px;
+	text-align: center;
+}
+
+.iconprofile {	
+	width: 70px;
+	height: 70px;
+}
+
+.profile:hover {
+/* 	background-color: rgba(172, 223, 104, 0.5); */
+	transition-property: all;
+	transition-duration: 0.1s;
+}
+
+img.block {
+	height: 40px;
+	float: left;
+	position: absolute;
+	left: 40px;
+	top: 30px;
+}
+
+img.shared {
+	height: 25px;
+	float: left;
+	position: absolute;
+	left: 15px;
+	top: 50px;
+}
+

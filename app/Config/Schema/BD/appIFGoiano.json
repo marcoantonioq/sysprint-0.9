@@ -1,0 +1,49 @@
+{
+    "Setting": {
+        "status": "0",
+        "title": "IFPrints",
+        "hostname": "",
+        "locale": "pt-br",
+        "bootstraps": "Settings,Comments,Contacts",
+        "date_time_format": "D, M d Y H:i:s",
+        "force_https": "0",
+        "descrition": "",
+        "allow": "1",
+        "resolv_conf": "",
+        "AD": {
+            "auth": "1",
+            "ldap_host": "10.2.0.2",
+            "ldap_port": "389",
+            "base_dn": "DC=ifgoiano,DC=local",
+            "ldap_user": "CN=Admin Trindade,CN=Users,DC=ifgoiano,DC=local",
+            "ldap_pass": "dzR1c292cm9NQTdXa1M2MlY4Ylo=",
+            "suffix": "@ifgoiano.local",
+            "attr": "name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,memberOf,thumbnailphoto",
+            "filter": "&(objectClass=user)(!(extensionattribute2=*Aluno*))"
+        },
+        "EMAIL": {
+            "email_notification": "1",
+            "transport": "Smtp",
+            "title": "CORDI",
+            "from": "ifgcordigoias@gmail.com",
+            "host": "ssl:\/\/smtp.gmail.com",
+            "port": "465",
+            "timeout": "30",
+            "username": "ifgcordigoias@gmail.com",
+            "password": "",
+            "log": "",
+            "charset": "",
+            "headerCharset": ""
+        },
+        "DATA": {
+            "datasource": "Database\/Mysql",
+            "host": "localhost",
+            "login": "root",
+            "password": "",
+            "database": "prints",
+            "persistent": "false",
+            "prefix": "",
+            "encoding": "utf8"
+        }
+    }
+}

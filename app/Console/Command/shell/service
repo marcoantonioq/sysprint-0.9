@@ -1,0 +1,16 @@
+#!/bin/sh
+# ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../../../ && pwd )";
+# ROOT_Console="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../../ && pwd )";
+php=$(command -v php);
+
+echo "reloadLog";
+ps aux | grep "reloadLog" | grep -v grep &>/dev/null ||
+$php ../../cake.php printer reloadLog &
+sleep 1;
+
+echo "setPrivilege";
+ps aux | grep "setPrivilege" | grep -v grep ||
+$php ../../cake.php user setPrivilege &
+sleep 1;
+
+chown www-data.www-data -R ../../../app/tmp/

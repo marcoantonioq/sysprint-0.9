@@ -1,0 +1,18 @@
+#!/bin/sh
+
+case $1 in
+	start)
+    ROOT_SERVICE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+    source $ROOT_SERVICE/config
+
+    sed -i '/^PageLogFormat*/d' $CUPS_CONF;
+    sed -i '1 a PageLogFormat {"print": "%p","user": "%u","job": "%j","time": "%T","pages": "%P","copies": "%C","job-billing": "%{job-billing}","job-originating-host-name": "%{job-originating-host-name}","job-name":"%{job-name}","media": "%{media}","sides": "%{sides}"}' $CUPS_CONF;
+    # hostnamectl set-hosname --static "nomehost"
+	;;
+	status)
+		echo 'Configurado';
+	;;
+	*)
+		exit 2
+esac
+exit 0;

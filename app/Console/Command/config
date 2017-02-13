@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Arquivos para auditoria (LOGS)
+CUPS_CONF="/etc/cups/cupsd.conf"; 				## arquivo de log do cups
+PAGE_LOG="/var/log/cups/page_log"; 				## arquivo de log do cups
+
+USER_APACHE="apache"; 				## USUÁRIO SERVIDOR APACHE
+
+RELOAD_TIME_DEFAULT="10";
+RELOAD_TIME_SHORT="2";

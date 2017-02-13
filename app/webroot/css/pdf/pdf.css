@@ -1,0 +1,69 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma", Times, serif;;
+}
+
+.page {
+	background: white;
+	border-radius: 5px;
+	border: 1px #D3D3D3 solid;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	margin: 1cm auto;
+	min-height: 29.7cm;
+	width: 196mm;
+}
+
+.subpage {
+    padding: 1cm;
+    border: 5px red solid;
+    height: 256mm;
+    outline: 2cm #FFEAEA solid;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+	* {
+		background:transparent !important;
+		color:#000 !important;
+		text-shadow:none !important;
+		filter:none !important;
+		-ms-filter:none !important;
+	    box-sizing: border-box;
+	    -moz-box-sizing: border-box;
+	}
+    .page {
+        background: initial;
+        border-radius: initial;
+        border: initial;
+        box-shadow: initial;
+        margin: 0;
+        min-height: initial;
+        page-break-after: always;
+        width: initial;
+    }
+
+	a, a:visited {
+	text-decoration: underline;
+	}
+
+    p a {
+	word-wrap: break-word;
+	}
+
+	p {
+	widows: 3;
+	}
+
+	p {
+	orphans: 3;
+	}
+
+	.page-break { 
+	page-break-before: always; 
+	}
+}

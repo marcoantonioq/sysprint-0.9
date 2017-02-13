@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    padding: 20px 0 0;
+    font-family: Helvetica, Rounded, bold condensed; 
+    background-color:#F7F7F7;
+    text-align: center;
+    font-size: 16px;    
+}
+
+.logo {
+    margin: 0 auto;
+    width: auto;
+    height: 90px;
+    
+    transition:all .2s linear; 
+    -o-transition:all .2s linear; 
+    -moz-transition:all .2s linear; 
+    -webkit-transition:all .2s linear;
+}
+
+.logo_img {
+    width: 350px;
+}
+
+.login {
+    padding: 2em;
+    width: 274px;
+    background-color: rgb(238, 255, 218);
+    border: 1px solid #e6f7d1;
+    margin: 20px auto 10px;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 7px 7px 10px rgba(0, 0, 0, .5);
+}
+
+a {
+    text-decoration: none;
+    padding: 5px;
+    color: rgba(84, 84, 84, 1);
+    font-weight: 500;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+input, .submit {
+    width: 100%;
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    border-radius: 2px; 
+    padding: 10px 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;   
+}
+
+input[type="submit"], .submit {
+    border: 0px;
+    color: #fff;
+    text-shadow: 0 2px rgba(0,0,0,0.1); 
+    background-color: #73a3f2;    
+}
+
+input[type="submit"] {
+    background-color: #71C837;
+}
+
+.conection {
+    font-size: 12px;   
+    color: #666;
+}
+
+.help {
+    text-align: left;
+    background-color: #D40000;
+    float: right;
+    color: #fff;
+    padding: 7px 12px;
+    border-radius: 345px;
+    font-weight: 900;
+    font-size: 15px;
+}
+
+.helping {
+    margin: 0 auto;
+    width: 90%;
+    border: 1px solid #DDD;
+    background: #96b8ef;
+    padding: 20px 5px 10px;
+}
+
+close{
+    background: 
+}
+
+.hide {
+    display: none !important;
+/*    visibility: hidden;*/
+}
+
+.show {
+    display: block !important;
+/*    visibility: visible;*/
+}
+
+
+
+.tooltip {
+	display: inline;
+	position: relative;
+}
+
+.tooltip:hover:after{
+	padding: 5px 5px;
+	width: 220px;
+	border-radius: 5px;
+	background: #333;
+	background: rgba(0,0,0,.8);
+	content: attr(data-title);
+	position: absolute;
+	left: 20%;
+	bottom: 26px;
+	z-index: 98;
+	color: #fff;
+}
+
+.tooltip:hover:before{
+	border: solid;
+	border-color: #333 transparent;
+	border-width: 6px 6px 0px 6px;
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: 20px;
+	z-index: 999999;
+}
+
+
+@media(max-width: 360px) {
+    
+    .logo {
+        width: 70px;
+        overflow: hidden;
+        
+        
+    }
+    
+    .login {
+/*        padding: 1em;*/
+        width: 80%;
+        border: 1px solid #e6f7d1;
+        margin: 20px auto 10px;
+       
+/*
+        transition-property: width;
+        transition-duration: 1s;
+        transition-timing-function: linear;
+        transition-delay: 2s;
+*/
+    }
+    
+}
