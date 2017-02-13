@@ -58,6 +58,17 @@
   			)
   		);
 
+      	echo $this->Html->link( $this->Html->image("/img/icons/up.png"),
+  			array(
+  				'controller'=>'update',
+  				'action' => 'index'
+  			),
+  			array(
+  				'escape' => false,
+  				'title'=>'Update'
+  			)
+  		);
+
 			echo $this->Html->link(
 				$this->Html->image("/img/icons/logout.png"),
 				'/',

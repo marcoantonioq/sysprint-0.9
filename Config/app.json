@@ -1,15 +1,26 @@
 {
     "Setting": {
         "status": "1",
-        "title": "SYSPrints",
+        "title": "IFPrints",
         "hostname": "",
         "locale": "pt-br",
-        "bootstraps": "",
+        "bootstraps": "Settings,Comments,Contacts",
         "date_time_format": "D, M d Y H:i:s",
         "force_https": "0",
         "descrition": "",
         "auth": "1",
         "resolv_conf": "",
+        "AD": {
+            "conect": "1",
+            "ldap_host": "10.11.0.10",
+            "ldap_port": "389",
+            "base_dn": "OU=IFG,DC=ifg,DC=br",
+            "ldap_user": "goiservice",
+            "ldap_pass": "QnJhc2lsMDU=",
+            "suffix": "@ifg.br",
+            "attr": "name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group",
+            "filter": "&(objectClass=user)(!(extensionattribute2=*Aluno*))"
+        },
         "EMAIL": {
             "email_notification": "1",
             "transport": "Smtp",
@@ -28,9 +39,9 @@
             "datasource": "Database\/Mysql",
             "host": "localhost",
             "login": "root",
-            "password": "",
+            "password": "I1NAa2l0byM=",
             "database": "sysprints",
-            "persistent": "false",
+            "persistent": "als",
             "prefix": "",
             "encoding": "utf8"
         }

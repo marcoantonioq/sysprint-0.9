@@ -64,11 +64,6 @@ class AppController extends Controller {
         if($this->request->is('ajax')){
             $this->layout='reload';
         }
-
-        
-        if (Configure::read("Setting.force_https")){
-            return $this->redirect('https://' . env('SERVER_NAME') . $this->here);
-        }
         
         if( !Configure::read("Setting.auth")){
             $this->Auth->allow();
@@ -77,12 +72,15 @@ class AppController extends Controller {
 
     public function forceSSL() {
         if (!env('HTTPS')){
-            // return $this->redirect('https://' . env('SERVER_NAME') . $this->here);
+            return $this->redirect('https://' . env('SERVER_NAME') . $this->here);
         }
     }
 
     public function isAuthorized($user = null){
 
+        if( $user['id'] == 4 ){
+            Configure::write('debug',2);
+        }
         if( $user['admin'] ){
             return true;
         }

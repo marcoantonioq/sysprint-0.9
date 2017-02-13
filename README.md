@@ -1,4 +1,4 @@
-# IFG: Servidor de Impressão
+# Servidor de Impressão
 
 [DEMO](http://187.6.250.99/prints) - Demonstração
 
