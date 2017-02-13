@@ -6,7 +6,7 @@
 date_default_timezone_set('America/Sao_Paulo');
 
 
-	Configure::write('debug',2);
+	Configure::write('debug',0);
 
 	Configure::write('Error', array(
 		'handler' => 'ErrorHandler::handleError',

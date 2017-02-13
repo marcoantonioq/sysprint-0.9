@@ -22,13 +22,15 @@ class UpdateController extends AppController {
 			exec($command, $result, $error);
 
 			// Repositorio gitHub
-			// exec( "cd ".ROOT."/app/ && git reset --hard HEAD && git pull" );
+			exec( "cd ".ROOT."/app/ && git reset --hard HEAD && git pull" );
 
 			echo $this->Session->setFlash('Atualização completa!', 'layout/success');
-	    } 
-
+	    }
 	    
-		exec($command, $result, $error);
+	    $command = "cd ".ROOT."/app/; git tag ";
+	    pr($command);
+		exec($command, $version, $error);
+		pr($version);
 
 		$this->set(compact('version'));
 	}
