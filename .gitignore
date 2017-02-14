@@ -1,6 +1,7 @@
 # User specific & automatically generated files #
 #################################################
 /Config/app.json
+/tmp/cache/
 *.mo
 *.log
 *.error

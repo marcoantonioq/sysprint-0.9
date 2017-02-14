@@ -68,6 +68,10 @@ class AppController extends Controller {
         if( !Configure::read("Setting.auth")){
             $this->Auth->allow();
         }
+
+        if( Configure::read("Setting.debug") ){
+            Configure::write('debug',2);
+        }
     }
 
     public function forceSSL() {
@@ -78,9 +82,7 @@ class AppController extends Controller {
 
     public function isAuthorized($user = null){
 
-        if( $user['id'] == 4 ){
-            Configure::write('debug',2);
-        }
+        
         if( $user['admin'] ){
             return true;
         }

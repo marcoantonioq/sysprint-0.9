@@ -34,12 +34,13 @@
 
 <div id="myTabContent" class="tab-content">
   <div class="tab-pane fade active in" id="tabApp">
-    <div class="right">
-      <?php echo "Versão: {$this->request->data['Setting']['version']}"; ?>
-    </div>
     <?php
     echo $this->Form->input('status', array(
       'label' => 'Manutenção',
+      'type' => 'checkbox',
+    ));
+    echo $this->Form->input('Depuração', array(
+      'label' => 'debug',
       'type' => 'checkbox',
     ));
     echo $this->Form->input('title', array(

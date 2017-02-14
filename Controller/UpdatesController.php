@@ -13,20 +13,17 @@ class UpdatesController extends AppController {
 		$this->set('title_for_layout', __(ucfirst('Update')));
 	}
 
-	public function index() {	    
-	    $command = "cd ".ROOT."/app/; git tag ";
-		exec($command, $version);
-		$this->set(compact('version'));
-	}
+	public function index() {
 
-	public function sync() {
-		if ($this->request->is('post')) {
-
-			$this->Update->AutoUpdate();
+		if ($this->request->is('post')) 
+		{
+			$return = $this->Update->AutoUpdate();
 			echo $this->Session->setFlash("Atualização completa! (Backup salvo em tmp)", 'layout/success');
-			return $this->redirect(array('action' => 'index'));
 	    }
 
+		$command = "cd ".ROOT."/app/; git tag | tail -n 1";
+		exec($command, $version);
+		
+		$this->set(compact('version', 'return'));
 	}
-
 }
