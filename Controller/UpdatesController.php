@@ -23,7 +23,7 @@ class UpdatesController extends AppController {
 		if ($this->request->is('post')) {
 
 			$this->Update->AutoUpdate();
-			echo $this->Session->setFlash("Atualização completa!(Backup salvo em tmp)", 'layout/success');
+			echo $this->Session->setFlash("Atualização completa! (Backup salvo em tmp)", 'layout/success');
 			return $this->redirect(array('action' => 'index'));
 	    }
 

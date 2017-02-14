@@ -1,7 +1,7 @@
 <div class="row-fluid">
     <div class="span12">
     	<h3>
-    		Versão atual: <?php echo $version[0]; ?>
+    		Versão atual: <?php pr($version); ?>
     	</h3>
     </div>
 

@@ -12,7 +12,9 @@ class Update extends AppModel {
 		exec($command, $result, $error);
 
 		// Repositorio gitHub
-		exec( "cd ".ROOT."/app/ && git reset --hard HEAD && git pull" );
+		$command = "cd ".ROOT."/app/ &&  git fetch origin; git reset --hard HEAD; git reset --hard origin/master; git pull; git fetch --tag";
+		pr($command); exit;
+		exec( $command, $result);
 	}
 	
 }
