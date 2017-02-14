@@ -36,6 +36,7 @@
             "charset": "",
             "headerCharset": ""
         },
+        
         "DATA": {
             "datasource": "Database\/Mysql",
             "host": "localhost",

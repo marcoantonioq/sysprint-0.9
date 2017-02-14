@@ -39,8 +39,8 @@
       'label' => 'Manutenção',
       'type' => 'checkbox',
     ));
-    echo $this->Form->input('Depuração', array(
-      'label' => 'debug',
+    echo $this->Form->input('debug', array(
+      'label' => 'Depuração',
       'type' => 'checkbox',
     ));
     echo $this->Form->input('title', array(
