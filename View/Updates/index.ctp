@@ -16,7 +16,9 @@
 	</div>
 
     <div class="span12">
-        <?php foreach ($return as $line => $value): ?>
+        <?php
+        if (!empty($return))
+        foreach ($return as $line => $value): ?>
             <?php echo $value; ?><br>
         <?php endforeach ?>
     </div>
