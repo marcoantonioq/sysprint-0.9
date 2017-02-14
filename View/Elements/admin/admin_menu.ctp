@@ -60,7 +60,7 @@
 
       	echo $this->Html->link( $this->Html->image("/img/icons/up.png"),
   			array(
-  				'controller'=>'update',
+  				'controller'=>'updates',
   				'action' => 'index'
   			),
   			array(

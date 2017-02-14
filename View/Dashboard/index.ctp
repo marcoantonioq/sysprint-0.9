@@ -31,34 +31,33 @@
         </tr>
         <?php endif; ?>
         <?php if(!empty($infoSystem['cpu']['Model name'])): ?>
-        <tr>
-          <td>
-            CPU
-          </td>
-          <td data-th="Model name">
-            <?php 
-              // pr($infoSystem['cpu']);
-              echo $infoSystem['cpu']['Model name']; 
-              echo "<br>Architecture: ".$infoSystem['cpu']['Architecture'];
-
-            ?>
-              if(!empty($infoSystem['mpstat'][0])):	
-            <details>
-              <summary>
-                Utilizada: <?php echo 100-$infoSystem['mpstat'][0]; ?>%
-                <progress max="100" value="<?php echo 100-$infoSystem['mpstat'][0]; ?>">
-                </summary>
-                <dl>
-                  <dt>Utilizada:</dt>
-                  <dd><?php echo 100-$infoSystem['mpstat'][0]; ?>%</dd>
-                  <dt>Disponível:</dt>
-                  <dd><?php echo $infoSystem['mpstat'][0]; ?>%</dd>
-                </dl>
-              </details>
-              <?php endif; ?>
-		
-          </td>
-        </tr>
+          <tr>
+            <td>
+              CPU
+            </td>
+            <td data-th="Model name">
+              <?php 
+                // pr($infoSystem['cpu']);
+                echo $infoSystem['cpu']['Model name']; 
+                echo "<br>Architecture: ".$infoSystem['cpu']['Architecture'];
+              ?>
+              <?php if(!empty($infoSystem['mpstat'][0])):	?>  
+              <details>
+                <summary>
+                  Utilizada: <?php echo 100-$infoSystem['mpstat'][0]; ?>%
+                  <progress max="100" value="<?php echo 100-$infoSystem['mpstat'][0]; ?>">
+                  </summary>
+                  <dl>
+                    <dt>Utilizada:</dt>
+                    <dd><?php echo 100-$infoSystem['mpstat'][0]; ?>%</dd>
+                    <dt>Disponível:</dt>
+                    <dd><?php echo $infoSystem['mpstat'][0]; ?>%</dd>
+                  </dl>
+                </details>
+                <?php endif; ?>
+  		
+            </td>
+          </tr>
         <?php endif; ?>
           <td>RAM</td>
           <td data-th="RAM">
