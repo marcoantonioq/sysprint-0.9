@@ -28,6 +28,6 @@
 
 # IDE and editor specific files #
 #################################
-sftp-config.json
+deployment-config.json
 .sync-config.cson
 /nbproject
