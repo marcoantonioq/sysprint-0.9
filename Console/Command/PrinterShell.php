@@ -7,11 +7,10 @@ class PrinterShell extends AppShell {
 
   }
   public function reloadLog() {
-      echo "reloadLogreloadLogreloadLog";
       $yer = date("Y");
       $day = date("m-d");
       $CUPS_CONF = $this->Printer->getSetting();
-      
+
       $dir_log = new Folder(ROOT."/app/Console/Command/shell/log/", true, 0755);
       $dir_yer = new Folder(ROOT."/app/Console/Command/shell/log/$yer", true, 0755);
 
@@ -24,7 +23,8 @@ class PrinterShell extends AppShell {
 
       $conteudo = $page_log_system->read(); // lê arquivo cups_log
       $page_log_tmp->append($conteudo); // adiciona conteudo em arquivo tmp
-      $page_log_system->delete(); // limpa o cups_log
+      // $page_log_system->delete(); // limpa o cups_log
+
       $page_log_system->close(); // fecha o arquivo
 
       $conteudo = $page_log_tmp->read(); // ler arquivo tmp (caso outra execução tenha falhado)

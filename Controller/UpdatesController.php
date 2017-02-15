@@ -15,7 +15,7 @@ class UpdatesController extends AppController {
 
 	public function index() {
 
-		if ($this->request->is('post')) 
+		if ($this->request->is('post'))
 		{
 			$return = $this->Update->AutoUpdate();
 			echo $this->Session->setFlash("Atualização completa! (Backup salvo em tmp)", 'layout/success');
@@ -23,7 +23,7 @@ class UpdatesController extends AppController {
 
 		$command = "cd ".ROOT."/app/; git tag | tail -n 1";
 		exec($command, $version);
-		
+
 		$this->set(compact('version', 'return'));
 	}
 }

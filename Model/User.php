@@ -91,7 +91,7 @@ class User extends AppModel {
 	public function get_ID($username)
 	{
 		$username = strtolower($username);
-		
+
 		$user_id = key($this->find('list', array(
 			'recursive'=> -1,
 			'conditions'=>array('User.username'=>$username)
@@ -122,9 +122,9 @@ class User extends AppModel {
 
   	public function AuthAD($data) {
   		if(Configure::read('Setting.auth') && Configure::read('Setting.AD.conect') && $this->bindAD($data['User']['username'], $data['User']['password']) ){
-			$this->id = $this->get_ID($data['User']['username']);		
+			$this->id = $this->get_ID($data['User']['username']);
 			if($this->saveField("password",$data['User']['password'])){
-				return true;				
+				return true;
 			}
 		}
 		return false;

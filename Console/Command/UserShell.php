@@ -1,15 +1,14 @@
 <?php
 class UserShell extends AppShell {
-  // public $uses = array('User');
+  public $uses = array('User');
 
   public function main() {
     $this->out(print_r($this->args));
   }
 
   public function setPrivilege() {
-  	echo "asdas";
   	pr("setPrivilege");
-    // $this->User->setPrivileges();
+    $this->User->setPrivileges();
   }
 }
 

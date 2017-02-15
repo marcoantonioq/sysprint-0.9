@@ -75,7 +75,7 @@
   </div>
 
   <div class="tab-pane fade" id="tabAd">
-    
+
     <?php
     echo $this->Form->input('auth', array(
       'label'=>'Autenticação',
@@ -101,7 +101,7 @@
 
     <div id="admessage" data-url="<?= $this->Html->url(array('action'=>'statusConectionAD')); ?>" class="message alert-message success-message hide"></div>
 
-    
+
 
     <?php
     echo "<div class='row-fluid'>";
@@ -257,7 +257,7 @@
 </div>
 
 <div class="tab-pane fade" id="tabSystem">
-  
+
   <div class="plugin">
     <h1>Network</h1>
     <div class="plugin-body scroll">
@@ -284,7 +284,7 @@
             MAC: d0:bf:9c:e3:43:8d
           </td>
           <td  data-th="Ações">
-            <?php 
+            <?php
             echo $this->Form->postLink('<span class="icon16 icomoon-icon-cog-2"></span>',
                 array(
                 ),
@@ -318,7 +318,7 @@
   </div>
 
   <div class="tab-pane fade" id="tabNetwork">
-    
+
     <?php
     echo "<div class='row-fluid'>";
     echo $this->Form->input('Network.DEFROUTE', array(
@@ -366,9 +366,9 @@
 
 </div>
 	<div class="form-actions form-horizontal">
-		<?php			  
+		<?php
     echo $this->Form->button(
-      "Enviar<span class='icon14 icomoon-icon-arrow-right-2'></span>", 
+      "Enviar<span class='icon14 icomoon-icon-arrow-right-2'></span>",
       array(
         'escape' => false,
         'class'=>'span4 btn btn-success'

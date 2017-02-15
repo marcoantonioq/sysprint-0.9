@@ -10,11 +10,11 @@ class EmailConfig {
 
 	public $smtp = array(
 		'transport' => 'Smtp',
-		'from' => array('ifgcordigoias@gmail.com' => 'Cordi Goiás'),
+		'from' => array('marco.aq7@gmail.com' => 'Cordi Goiás'),
 		'host' => 'ssl://smtp.gmail.com',
 		'port' => 465,
 		'timeout' => 30,
-		'username' => 'ifgcordigoias@gmail.com',
+		'username' => 'marco.aq7@gmail.com',
 		'password' => '',
 		//'client' => null,
 		//'log' => false,
