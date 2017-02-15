@@ -124,8 +124,9 @@ class UsersController extends AppController {
 				$this->Session->setFlash(__('Não pôde ser salvo. Por favor, tente novamente.'), 'layout/error');
 			}
 		}
+		$printers = $this->User->Printer->find('list');
 		$groups = $this->User->Group->find('list');
-		$this->set(compact('groups'));
+		$this->set(compact('groups', 'printers'));
 	}
 
 

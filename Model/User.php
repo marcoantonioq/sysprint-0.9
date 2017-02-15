@@ -67,8 +67,8 @@ class User extends AppModel {
 		'Group' => array(
 			'className' => 'Group',
 			'joinTable' => 'users_groups',
-			'foreignKey' => 'group_id',
-			'associationForeignKey' => 'user_id',
+			'foreignKey' => 'user_id',
+			'associationForeignKey' => 'group_id',
 			'unique' => 'keepExisting',
 			'conditions' => '',
 			'fields' => '',

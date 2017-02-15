@@ -21,7 +21,7 @@ class ADBehavior extends ModelBehavior {
 		self::$base_dn = $IFPrint['base_dn'];
 		self::$ldap_user = $IFPrint['ldap_user'];
 		self::$ldap_pass = base64_decode($IFPrint['ldap_pass']);
-		self::$suffix = $IFPrint['suffix'];	
+		self::$suffix = $IFPrint['suffix'];
 		self::$attr = explode(",", $IFPrint['attr']);
 		self::$filter = $IFPrint['filter'];
 	}
@@ -32,7 +32,7 @@ class ADBehavior extends ModelBehavior {
 			ldap_set_option($connect, LDAP_OPT_TIMELIMIT, 3);
 			ldap_set_option($connect, LDAP_OPT_PROTOCOL_VERSION, 3);
 			$bind = ldap_bind($connect, self::$ldap_user, self::$ldap_pass); // or die("Erro bind");
-			self::$connect = $connect;			
+			self::$connect = $connect;
 		// }
 	}
 
@@ -56,7 +56,7 @@ class ADBehavior extends ModelBehavior {
 		$result = ldap_get_entries(self::$connect, $read);
 		return $result;
 	}
-	
+
 	public static function bindAD(Model $Model, $ldap_user, $ldap_pass){
 		self::startConect();
 		return (@ldap_bind(self::$connect, $ldap_user.self::$suffix, $ldap_pass))?true:false;
@@ -78,8 +78,8 @@ class ADBehavior extends ModelBehavior {
         	$users[$key]['User']['name'] = $userAD['0']['displayname']['0'];
 			if (!empty($userAD['0']['mail']['0']))
 				$users[$key]['User']['email'] = $userAD['0']['mail']['0'];
-			if (!empty($userAD['0']['thumbnailphoto']['0'])) {				
-				
+			if (!empty($userAD['0']['thumbnailphoto']['0'])) {
+
 				$finfo = new finfo(FILEINFO_MIME_TYPE);
 				$mime = explode(';', $finfo->buffer($userAD['0']['thumbnailphoto']['0']));
 				$users[$key]['User']['thumbnailphoto'] = "data:image/jpeg;base64," . base64_encode($userAD['0']['thumbnailphoto']['0']);

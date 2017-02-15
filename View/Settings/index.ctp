@@ -135,6 +135,7 @@
 		));
     echo $this->Form->input('AD.attr', array(
 			'placeholder'=>'ADAttr: name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailPhoto',
+      'value'=>'name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailphoto',
 			'title'=>ucfirst(__('attr')),
 		));
     echo $this->Form->input('AD.filter', array(
