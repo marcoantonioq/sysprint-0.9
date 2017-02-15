@@ -10,29 +10,29 @@
 				array('class'=> 'btn btn-info','id'=>'btnmenu')
 			);
 
-		?> 
+		?>
 		<div id="rowmenus" class="row-fluid">
 			<br>
 			    <?php echo $this->Html->link('Novo '.__('group'),
 						array('controller' => 'groups', 'action' => 'add'),
 						array('class'=> 'btn btn-block btn-success')
 					);
-			    ?> 
-		    
+			    ?>
 
-					<?php 
+
+					<?php
 					echo $this->Html->link(__('Users'),
 						array('controller' => 'users', 'action' => 'index'),
 						array('class'=> 'btn btn-block')
 					);
 					?>
-			
+
 		</div>
 	</div>
 </div>
 
 <div class="row-fluid">
-	<div class="span12">		
+	<div class="span12">
 
 	<div class="tabela">
 		<table class='rwd-table'>
@@ -41,77 +41,70 @@
 				<th class="btnFilter">
 					<?php $this->Filter->img(); ?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('id', ucfirst(__('id'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('id', ucfirst(__('id')));
+					?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('name', ucfirst(__('name'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('name', ucfirst(__('name')));
+					?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('quota', ucfirst(__('quota'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('quota', ucfirst(__('quota')));
+					?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('descrition', ucfirst(__('descrition'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('descrition', ucfirst(__('descrition')));
+					?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('ad', ucfirst(__('ad'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('ad', ucfirst(__('ad')));
+					?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('admin', ucfirst(__('admin'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('admin', ucfirst(__('admin')));
+					?>
 				</th>
-												
-				<th>
-					<?php 
-						echo $this->Paginator->sort('accept', ucfirst(__('accept'))); 
-					?>				
-				</th>
-				
+
+
 				<th class="actions">
 							</th>
 			</tr>
 			<tr id="filter">
 				<td>
-					<?php echo $this->Form->checkbox('all.row', array( 'id'=>'allrow' ));?>					
+					<?php echo $this->Form->checkbox('all.row', array( 'id'=>'allrow' ));?>
 				</td>
-									
+
 					<?php echo $this->Filter->conditions('id'); ?>
-									
+
 					<?php echo $this->Filter->conditions('name'); ?>
-									
+
 					<?php echo $this->Filter->conditions('quota'); ?>
-									
+
 					<?php echo $this->Filter->conditions('descrition'); ?>
-									
+
 					<?php echo $this->Filter->conditions('ad'); ?>
-									
+
 					<?php echo $this->Filter->conditions('admin'); ?>
-									
-					<?php echo $this->Filter->conditions('accept'); ?>
-								
+
 				<td>
-					<?php 
+					<?php
 						echo  $this->Form->button('Buscar', array(
 							'class'=>'btn btn-success',
 							'style'=>'margin-bottom: 10px;'
-						)); 
+						));
 
 						echo $this->Html->link('Limpar',
 							array('action'=>'index'),
@@ -160,17 +153,12 @@
 			&nbsp;
 		</td>
 
-		<td data-th="<?php echo ucfirst(__('accept'));?>" >
-			<?php echo h($group['Group']['accept']); ?>
-			&nbsp;
-		</td>
-
 			<td data-th='Ações' class="actions">
-				
-				<?php 
-				echo $this->Html->link('<span class="icon12 brocco-icon-search"></span>', 
+
+				<?php
+				echo $this->Html->link('<span class="icon12 brocco-icon-search"></span>',
 					array(
-						'action' => 'view', 
+						'action' => 'view',
 						$group['Group']['id']
 					),
 					array(
@@ -178,12 +166,12 @@
 						'title'=>'Visualizar',
 						'class'=>'view',
 					)
-				); ?>				
-				
-				<?php 
-				echo $this->Html->link('<span class="icon12 brocco-icon-pencil"></span>', 
+				); ?>
+
+				<?php
+				echo $this->Html->link('<span class="icon12 brocco-icon-pencil"></span>',
 					array(
-						'action' => 'edit', 
+						'action' => 'edit',
 						$group['Group']['id']
 					),
 					array(
@@ -194,7 +182,7 @@
 				); ?>
 			</td>
 
-	
+
 	</tr>
 
 	<?php endforeach; ?>
@@ -203,7 +191,7 @@
 
 
 	<?php echo $this->element('layout/pagination'); ?>
-    
+
 	<?php echo $this->Form->end(); ?>
 	</div>
 </div>

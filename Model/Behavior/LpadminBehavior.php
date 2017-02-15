@@ -6,7 +6,6 @@ class LpadminBehavior extends ModelBehavior {
 	public static $CUPS_CONF = array(
 		"PATH" => "/etc/cups/cupsd.conf",
 		"PAGE_LOG" => "/var/log/cups/page_log",
-
 	);
 
 	public function getSetting()
@@ -23,7 +22,7 @@ class LpadminBehavior extends ModelBehavior {
 	    // $User->Printer->unbindModel(array(
 	    // 	'hasMany' => array('Job')
 	    // ), false );
-	    
+
 	    $prints = $User->Printer->find('all', array(
 	    	'recursive'=> 1,
 	    	'fields' => array('Printer.id', 'Printer.allow', 'Printer.name'),
@@ -33,7 +32,7 @@ class LpadminBehavior extends ModelBehavior {
 	    ));
 
 	    pr($prints);
-	    
+
 	    // foreach ($prints as $print) {
 
 	    // 	if ($print['Printer']['allow']){
