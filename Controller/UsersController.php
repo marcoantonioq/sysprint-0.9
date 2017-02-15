@@ -9,17 +9,12 @@ App::uses('AppController', 'Controller');
  */
 class UsersController extends AppController {
 
+	public $components = array('Paginator');
+
 	public function beforeFilter(){
 		parent::beforeFilter();
 		$this->set('title_for_layout', __(ucfirst('users')));
 	}
-
-/**
- * Components
- *
- * @var array
- */
-	public $components = array('Paginator');
 
 /**
  * index method
@@ -57,7 +52,7 @@ class UsersController extends AppController {
             } else {
                 $this->Session->setFlash('Senha incorreta ou usuário bloqueado!');
             }
-        	
+
         }
     }
 
@@ -169,7 +164,7 @@ class UsersController extends AppController {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
 		}
-		
+
 	}
 
 	public function delete($id = null) {
