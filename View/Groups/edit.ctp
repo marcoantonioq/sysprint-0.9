@@ -18,7 +18,9 @@
 			echo $this->Form->input('name', array(
 				'label'=>ucfirst(__('name')),
 			));
-
+			echo $this->Form->input('quota', array(
+				'label'=>ucfirst(__('quota')),
+			));
 			echo $this->Form->input('descrition', array(
 				'label'=>ucfirst(__('descrition')),
 			));

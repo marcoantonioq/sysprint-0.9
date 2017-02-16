@@ -56,6 +56,12 @@
 
 				<th>
 					<?php
+						echo $this->Paginator->sort('quota', ucfirst(__('quota')));
+					?>
+				</th>
+
+				<th>
+					<?php
 						echo $this->Paginator->sort('descrition', ucfirst(__('descrition')));
 					?>
 				</th>
@@ -72,7 +78,6 @@
 					?>
 				</th>
 
-
 				<th class="actions">
 							</th>
 			</tr>
@@ -84,6 +89,8 @@
 					<?php echo $this->Filter->conditions('id'); ?>
 
 					<?php echo $this->Filter->conditions('name'); ?>
+
+					<?php echo $this->Filter->conditions('quota'); ?>
 
 					<?php echo $this->Filter->conditions('descrition'); ?>
 
@@ -122,6 +129,11 @@
 
 		<td data-th="<?php echo ucfirst(__('name'));?>" >
 			<?php echo h($group['Group']['name']); ?>
+			&nbsp;
+		</td>
+
+		<td data-th="<?php echo ucfirst(__('quota'));?>" >
+			<?php echo h($group['Group']['quota']); ?>
 			&nbsp;
 		</td>
 

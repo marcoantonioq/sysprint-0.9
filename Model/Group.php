@@ -36,6 +36,23 @@ class Group extends AppModel {
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
+		public function afterSave($created, $options = array())
+		{
+			// $this->User->updateAll(
+			// 	array("quota"=>$this->data['Group']['quota']),
+			// 	array("id"=>$this->data['User']['User'])
+			// );
+			// foreach ($this->data['User']['User'] as $key => $id) {
+			// 	// $this->User->id = $id;
+			// 	if($this->User->saveField('quota', $this->data['Group']['quota'])){
+			// 		echo "Echo update ok";
+			// 	}
+			// 	pr($this->User->read());
+			// }
+			// pr($this->data['Group']['quota']);
+			// exit;
+			return true;
+		}
 /**
  * hasAndBelongsToMany associations
  *

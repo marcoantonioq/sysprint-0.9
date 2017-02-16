@@ -87,6 +87,9 @@ class User extends AppModel {
 		}
 		return true;
 	}
+	public function afterSave($created, $options = array())
+	{
+	}
 
 	public function get_ID($username)
 	{
