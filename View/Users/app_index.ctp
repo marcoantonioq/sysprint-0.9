@@ -24,7 +24,7 @@
                 <?php echo h($user['User']['email']); ?>
                 &nbsp;
             </dd>
-			
+
 			<dt><?php echo ucfirst(__('quota')); ?></dt>
             <dd>
                 <?php echo h($user['User']['quota']); ?>
