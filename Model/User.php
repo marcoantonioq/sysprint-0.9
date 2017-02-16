@@ -53,9 +53,9 @@ class User extends AppModel {
 	public $hasAndBelongsToMany = array(
 		'Printer' => array(
 			'className' => 'Printer',
-			'joinTable' => 'users_groups',
-			'foreignKey' => 'group_id',
-			'associationForeignKey' => 'user_id',
+			'joinTable' => 'users_printers',
+			'foreignKey' => 'user_id',
+			'associationForeignKey' => 'printer_id',
 			'unique' => 'keepExisting',
 			'conditions' => '',
 			'fields' => '',

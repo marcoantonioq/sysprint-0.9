@@ -9,7 +9,6 @@
 				array('app'=>true, 'controller' => 'users', 'action' => 'logout'),
 				array('class'=> 'btn')
 			);
-
 		?>
 
 	    <?php echo $this->Html->link('Sincronizar AD',
@@ -164,9 +163,14 @@
 						</div>
 						<?php echo ucfirst( (empty($user['User']['name'])) ? $user['User']['username'] : $user['User']['name'] ); ?></td>
 					<td data-th="Grupo" >
-						<?php echo (empty($user['Group']['name'])) ? "nenhum grupo" : $user['Group']['name']; ?></td>
+            <?php
+            foreach ($user['Group'] as $group) {
+              echo $group['name'].'; ';
+            }
+             ?>
+						</td>
 					<td data-th="Quota" >
-						<?php echo (empty($user['User']['group_id'])) ? "0" : $user['Group']['quota']; ?></td>
+						<?php echo $user['User']['quota']; ?></td>
 					<td data-th="Status" >
 						<?php echo $this->Link->status($user['User']['id'], $user['User']['status']); ?></td>
 					<td></td>

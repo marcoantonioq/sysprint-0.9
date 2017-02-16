@@ -120,19 +120,19 @@ class PrintersController extends AppController {
  *
  * @return void
  */
-	public function add() {
-		if ($this->request->is('post')) {
-			$this->Printer->create();
-			if ($this->Printer->save($this->request->data)) {
-				$this->Session->setFlash(__('Foi salvo.'), 'layout/success');
-				return $this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('Não pôde ser salvo. Por favor, tente novamente.'), 'layout/error');
-			}
-		}
-		$users = $this->Printer->User->find('list');
-		$this->set(compact('users'));
-	}
+	// public function add() {
+	// 	if ($this->request->is('post')) {
+	// 		$this->Printer->create();
+	// 		if ($this->Printer->save($this->request->data)) {
+	// 			$this->Session->setFlash(__('Foi salvo.'), 'layout/success');
+	// 			return $this->redirect(array('action' => 'index'));
+	// 		} else {
+	// 			$this->Session->setFlash(__('Não pôde ser salvo. Por favor, tente novamente.'), 'layout/error');
+	// 		}
+	// 	}
+	// 	$users = $this->Printer->User->find('list');
+	// 	$this->set(compact('users'));
+	// }
 
 
 /**
@@ -149,7 +149,7 @@ class PrintersController extends AppController {
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Printer->save($this->request->data)) {
 				$this->Session->setFlash(__('Foi salvo.'), 'layout/success');
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('action' => 'indexedit'));
 			} else {
 				$this->Session->setFlash(__('Não pôde ser salvo. Por favor, tente novamente.'), 'layout/error');
 			}
@@ -159,6 +159,19 @@ class PrintersController extends AppController {
 		}
 		$users = $this->Printer->User->find('list');
 		$this->set(compact('users'));
+	}
+
+	public function quota($id = null) {
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Printer->saveAll($this->request->data)) {
+				$this->Session->setFlash(__('Foi salvo.'), 'layout/success');
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('Não pôde ser salvo. Por favor, tente novamente.'), 'layout/error');
+			}
+		}
+		$printers = $this->Printer->find('all');
+		$this->set(compact('users','printers'));
 	}
 
 /**

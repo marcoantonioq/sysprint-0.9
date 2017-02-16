@@ -16,6 +16,10 @@
           'class'=> 'span3 btn'
         )
 			)." ";
+			echo $this->Html->link('Quota',
+        array('controller' => 'printers', 'action' => 'quota'),
+        array('class'=> 'span3 btn')
+			)." ";
 			echo $this->Html->link('Editar impressoras',
 				array('controller' => 'printers', 'action' => 'indexedit'),
 				array('class'=> 'span3 btn')
@@ -56,11 +60,11 @@
 		<?php endforeach; ?>
 	</div>
 
-	<?php 
+	<?php
 	// echo $this->Html->link("",
 	// 	array('controller'=>'spools', 'action'=>'active'),
 	// 	array('id' => 'UrlSpools')
-	// ); 
+	// );
 	?>
 
 </div>

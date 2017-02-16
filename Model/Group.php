@@ -38,19 +38,12 @@ class Group extends AppModel {
 
 		public function afterSave($created, $options = array())
 		{
-			// $this->User->updateAll(
-			// 	array("quota"=>$this->data['Group']['quota']),
-			// 	array("id"=>$this->data['User']['User'])
-			// );
-			// foreach ($this->data['User']['User'] as $key => $id) {
-			// 	// $this->User->id = $id;
-			// 	if($this->User->saveField('quota', $this->data['Group']['quota'])){
-			// 		echo "Echo update ok";
-			// 	}
-			// 	pr($this->User->read());
-			// }
-			// pr($this->data['Group']['quota']);
-			// exit;
+			$this->User->updateAll(
+				array('User.quota' => $this->data['Group']['quota']),
+				array('OR'=>array(
+					'User.id'=> $this->data['User']['User']
+				))
+			);
 			return true;
 		}
 /**

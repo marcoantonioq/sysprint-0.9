@@ -27,9 +27,9 @@ class GroupsController extends AppController {
  */
 	public function index() {
 		if ($this->request->is('post')) {
-            $this->Paginator->settings = $this->Group->action($this->request->data);
-            echo $this->Session->setFlash('Filtro definido!', 'layout/success');
-        }
+          $this->Paginator->settings = $this->Group->action($this->request->data);
+          echo $this->Session->setFlash('Filtro definido!', 'layout/success');
+      }
 		$this->Group->recursive = 0;
 		$this->set('groups', $this->Paginator->paginate());
 	}
@@ -96,7 +96,7 @@ class GroupsController extends AppController {
 		$users = $this->Group->User->find('list');
 		$this->set(compact('users'));
 	}
-	
+
 
 /**
  * delete method
@@ -112,7 +112,7 @@ class GroupsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Group->delete()) {
-	
+
 			$this->Session->setFlash(__('Foi excluído.'), 'layout/success');
 		} else {
 			$this->Session->setFlash(__('Não foi excluído. Por favor, tente novamente.'), 'layout/error');

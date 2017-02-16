@@ -26,7 +26,7 @@ class UsersController extends AppController {
 	        $this->Paginator->settings = $this->User->action($this->request->data);
 	        echo $this->Session->setFlash('Filtro definido!', 'layout/success');
     	}
-		$this->User->recursive = 0;
+		$this->User->recursive = 1;
 		$groups = $this->User->Group->find('list');
 		$users = $this->Paginator->paginate();
 		$this->set(compact('groups', 'users'));
