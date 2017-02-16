@@ -13,53 +13,17 @@ class LpadminBehavior extends ModelBehavior {
 		return self::$CUPS_CONF;
 	}
 
-	public function setPrivileges(Model $User){
-
-	    $users_allow = array(); // lista de usuários liberados
-	    $users_deny = array(); // lista de usuários deny
-
-	    // Lista com as impressoras
-	    // $User->Printer->unbindModel(array(
-	    // 	'hasMany' => array('Job')
-	    // ), false );
-
-	    $prints = $User->Printer->find('all', array(
-	    	'recursive'=> 1,
-	    	'fields' => array('Printer.id', 'Printer.allow', 'Printer.name'),
-	    	'User' => array(
-	    		'fields' => array('User.id')
-	    	)
-	    ));
-
-	    pr($prints);
-
-	    // foreach ($prints as $print) {
-
-	    // 	if ($print['Printer']['allow']){
-	    // 		$cmd = "/usr/sbin/lpadmin -p {$print['Printer']['name']} -u allow:all";
-	    // 		pr($cmd); exec($cmd);
-	    // 		continue;
-	    // 	}
-
-	    //   	// Padrão negado para todos usuários
-	    // 	$cmd = "/usr/sbin/lpadmin -p {$print['Printer']['name']} -u deny:all";
-	    // 	pr($cmd); exec($cmd);
-
-	    //   	//  get lista de usuários
-	    // 	foreach ( $print['User'] as $user) {
-	    //     // verifica status do usuário
-	    // 		if (!$user['status'])
-	    // 			continue;
-	    // 		$users_allow[] = $user['username'];
-	    // 	}
-
-	    // 	if (!empty($users_allow)) {
-	    // 		$allow = implode(",", $users_allow);
-	    // 		$cmd = "/usr/sbin/lpadmin -p {$print['Printer']['name']} -u allow:{$allow}";
-	    // 		pr($cmd); exec($cmd);
-	    // 		$users_allow = array();
-	    // 	}
-	    // }
+	public function setQuota(Model $User, $data){
+		foreach ($data as $print) {
+			// pr($print);
+			$job_quota_period=(empty( $print['Printer']['job-quota-period'] ) ) ? 0 : $print['Printer']['job-quota-period'];
+			$job_page_limit=(empty( $print['Printer']['job-page-limite'] ) ) ? 0 : $print['Printer']['job-page-limite'];
+			$job_k_limit=(empty( $print['Printer']['job-k-limit'] ) ) ? 0 : $print['Printer']['job-k-limit'];
+			$cmd = "/usr/sbin/lpadmin -p {$print['Printer']['name']} -o job-quota-period={$job_quota_period} -o job-k-limit={$job_page_limit} -o job-page-limit={$job_k_limit} ";
+			exec($cmd, $result);
+			// pr($cmd); pr($result);
+		}
+		// exit;
 	}
 
 

@@ -49,7 +49,11 @@
         <?php foreach ($printers as $key => $printer): ?>
         <tr>
     					<td>
+                <?php $updated_quota=$printer['Printer']['updated_quota']; ?>
                 <?php echo $this->Form->input("$key.Printer.id", array( 'value'=>$printer['Printer']['id'])); ?>
+                <?php echo $this->Form->input("$key.Printer.name", array('type'=>'hidden',  'value'=>$printer['Printer']['name'])); ?>
+                <?php $date=date('Y-m-d H:i:s'); ?>
+                <?php echo $this->Form->input("$key.Printer.updated_quota", array('div'=>'hidden','type'=>'datetime', 'selected'=>$date)); ?>
                 <?php echo $printer['Printer']['name']; ?><br>
     						<?php echo $printer['Printer']['local']; ?>
     					</td>
@@ -67,7 +71,9 @@
         			echo $this->Form->button('Limpar', array(
         				'type'=>'reset',
         				'class'=>'btn btn-warning'
-        			));
+        			))." ";
+
+              echo "Regra atualizada em: ".date("d/m/H H:i:s", strtotime($updated_quota));
 
         			echo $this->Form->end();
 

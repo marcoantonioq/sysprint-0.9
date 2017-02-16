@@ -18,13 +18,13 @@ class Printer extends AppModel {
  *
  * @var array
  */
-	public $validate = array(
-		'name' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty')
-			),
-		),
-	);
+	// public $validate = array(
+	// 	'name' => array(
+	// 		'notEmpty' => array(
+	// 			'rule' => array('notEmpty')
+	// 		),
+	// 	),
+	// );
 
 	public $hasMany = array(
 		'Job' => array(

@@ -163,9 +163,11 @@ class PrintersController extends AppController {
 
 	public function quota($id = null) {
 		if ($this->request->is(array('post', 'put'))) {
+			
 			if ($this->Printer->saveAll($this->request->data)) {
-				$this->Session->setFlash(__('Foi salvo.'), 'layout/success');
-				return $this->redirect(array('action' => 'index'));
+				$this->Printer->setQuota($this->request->data);
+				$this->Session->setFlash(__('Novas regras foram salvas.'), 'layout/success');
+				// return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('Não pôde ser salvo. Por favor, tente novamente.'), 'layout/error');
 			}
