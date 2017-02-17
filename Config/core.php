@@ -1,12 +1,6 @@
 <?php
-
-
-//setLocale(LC_ALL, 'deu');
-//Configure::write('Config.language', 'deu');
-date_default_timezone_set('America/Sao_Paulo');
-
-
-	Configure::write('debug',2);
+	date_default_timezone_set('America/Sao_Paulo');
+	Configure::write('debug',0);
 
 	Configure::write('Error', array(
 		'handler' => 'ErrorHandler::handleError',

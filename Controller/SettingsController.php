@@ -1,4 +1,8 @@
 <?php
+// App::uses('ConnectionManager', 'Model');
+// $dataSource = ConnectionManager::getDataSource('default');
+// $username = $dataSource->config['password'];
+
 App::uses('AppController', 'Controller');
 
 class SettingsController extends AppController {
@@ -8,6 +12,7 @@ class SettingsController extends AppController {
 	}
 
 	public function index() {
+
 		if ($this->request->is('post')) {
 			$this->Setting->create();
 			// pr($this->request->data);
@@ -16,7 +21,7 @@ class SettingsController extends AppController {
 				$data['Setting']['AD'] = $this->request->data['AD'];
 				$data['Setting']['EMAIL'] = $this->request->data['EMAIL'];
 				$data['Setting']['DATA'] = $this->request->data['DATA'];
-				$this->Setting->writejson($data);				
+				$this->Setting->writejson($data);
 			}
 		} else {
 			$this->request->data = $this->Setting->readjson();
@@ -40,7 +45,7 @@ class SettingsController extends AppController {
 			if ($service == "ifprint") {
 				// $user="root";
 				// $pass ="";
-				
+
 				// // remove do crontab
 				// $cmd = "echo {$pass} | su - {$user} -c \"sed -i '/Command\/shell\/service/d' /etc/crontab\"";
 				// exec($cmd, $result);
@@ -49,7 +54,7 @@ class SettingsController extends AppController {
 				// $cmd = "echo {$pass} | su - {$user} -c \"echo '*/1 * * * * root /opt/lampp/htdocs/prints/app/Console/Command/shell/service'>> /etc/crontab \"";
 				// exec($cmd, $result);
 				// pr($result);
-				// exit;				
+				// exit;
 			}
 
 			$this->Session->setFlash('Services start', 'layout/success');
@@ -79,7 +84,7 @@ class SettingsController extends AppController {
 				$data['Setting']['AD'] = $this->request->data['AD'];
 				$data['Setting']['EMAIL'] = $this->request->data['EMAIL'];
 				$data['Setting']['DATA'] = $this->request->data['DATA'];
-				$this->Setting->writejson($data);				
+				$this->Setting->writejson($data);
 			}
 			if($this->Setting->testConect()){
 				$this->Session->setFlash('Conectado :)', 'layout/success');
