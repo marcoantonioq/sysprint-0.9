@@ -1,8 +1,6 @@
-<script type="text/javascript">
-
-</script>
 
 <?php
+  // auto update configurado em Setting.js
   echo $this->Form->create('Setting', array());
   $this->Form->inputDefaults(array(
     'class'=>'span12',
@@ -35,39 +33,39 @@
 <div id="myTabContent" class="tab-content">
   <div class="tab-pane fade active in" id="tabApp">
     <?php
-    echo $this->Form->input('status', array(
+    echo $this->Form->input('SYSApp.status', array(
       'label' => 'Manutenção',
       'type' => 'checkbox',
     ));
-    echo $this->Form->input('debug', array(
+    echo $this->Form->input('SYSApp.debug', array(
       'label' => 'Depuração',
       'type' => 'checkbox',
     ));
-    echo $this->Form->input('title', array(
+    echo $this->Form->input('SYSApp.title', array(
       'placeholder'=>'Nome do servidor',
       'title'=>'Nome do servidor',
     ));
-    echo $this->Form->input('hostname', array(
+    echo $this->Form->input('SYSApp.hostname', array(
       'placeholder'=>'Hostname',
       'title'=>'Hostname',
     ));
-    echo $this->Form->input('locale', array(
+    echo $this->Form->input('SYSApp.locale', array(
     	'placeholder'=>ucfirst(__('locale')),
     	'title'=>ucfirst(__('locale')),
     ));
-    echo $this->Form->input('bootstraps', array(
+    echo $this->Form->input('SYSApp.bootstraps', array(
     	'placeholder'=>ucfirst(__('bootstraps')),
     	'title'=>ucfirst(__('bootstraps')),
     ));
-    echo $this->Form->input('date_time_format', array(
+    echo $this->Form->input('SYSApp.date_time_format', array(
     	'placeholder'=>ucfirst(__('date_time_format')),
     	'title'=>ucfirst(__('date_time_format')),
     ));
-    echo $this->Form->input('force_https', array(
+    echo $this->Form->input('SYSApp.force_https', array(
       'label' => 'Forçar https?',
       'type' => 'checkbox',
     ));
-    echo $this->Form->input('descrition', array(
+    echo $this->Form->input('SYSApp.descrition', array(
       'type'=>'textarea',
       'label'=>'Descrição do servidor:',
     ));
@@ -77,7 +75,7 @@
   <div class="tab-pane fade" id="tabAd">
 
     <?php
-    echo $this->Form->input('auth', array(
+    echo $this->Form->input('SYSApp.auth', array(
       'label'=>'Autenticação',
       'placeholder'=>ucfirst(__('Auth')),
       'title'=>ucfirst(__('Auth')),
@@ -304,12 +302,12 @@
 
     <?php
 
-    echo $this->Form->input('hostname', array(
+    echo $this->Form->input('Server.hostname', array(
       'placeholder'=>'Hostname',
       'title'=>'Hostname',
     ));
 
-    echo $this->Form->input('resolv_conf', array(
+    echo $this->Form->input('Server.resolv_conf', array(
       'placeholder'=>'resolv.conf',
       'title'=>'resolv.conf',
       'label' => 'Arquivo: resolv.conf',

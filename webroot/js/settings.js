@@ -5,12 +5,13 @@ autoSave = function(){
 	$("input")
 		.each(function(){
 			var input = $(this);
-			input.change(function(event) {				
+			input.change(function(event) {
 				$.ajax({
 					type: "POST",
 				    url: formData.attr("action"),
 				    data: formData.serialize(),
 				    success: function(data) {
+								// alert(data);
 				        input.removeClass('beforeAjax');
 				    },
 				    beforeSend: function(){
@@ -32,8 +33,8 @@ administrationAD = function() {
 	$("input[id^='AD']").each(function(){
 		var input = $(this);
 		var message = $("#admessage");
-		
-		input.change(function(event) {				
+
+		input.change(function(event) {
 			$.ajax({
 				type: "POST",
 			    url: message.data("url"),
@@ -53,17 +54,15 @@ administrationAD = function() {
 
 			});
 			return false;
-		});		
+		});
 	})
 }
 
 
-$(document).ready(function() {	
+$(document).ready(function() {
 	administrationAD();
 	autoSave();
 
-
-$(document).ready(function(){
   var activeTab = sessionStorage.getItem("Setting.nav.tab");
   if(activeTab && activeTab != "" && activeTab != "undefined"){
     $("#myTab li").removeClass("active");
@@ -79,7 +78,7 @@ $(document).ready(function(){
   $("#myTab li").click(function(){
     sessionStorage.setItem("Setting.nav.tab", $(this).attr("tab"));
   });
- 
+
   var alternar = function(){
     if ($(this)[0].checked) {
       $("#toggleAD").show();
@@ -93,7 +92,6 @@ $(document).ready(function(){
   } else{
     $("#toggleAD").hide();
   }
-  
+
   $("input#Auth").click(alternar);
-});
 });

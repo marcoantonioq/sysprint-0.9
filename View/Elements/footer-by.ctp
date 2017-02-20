@@ -37,9 +37,3 @@
 <script type="text/javascript">
 	//var footer-by = document.getElementById("footer-by");
 </script>
-<!-- 
-<div id="footer-by">
-	<strong>Instituto Federal de Goiás</strong></p>
-	Câmpus Cidade de Goiás</p>
-</div>
- -->

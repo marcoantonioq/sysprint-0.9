@@ -32,7 +32,7 @@
 		<?php foreach ($printers as $printer): ?>
 			<table class="profile" printer="<?php echo $printer['Printer']['id'] ?>">
 				<tr>
-					<td <?php echo ($printer['Printer']['id'] == 4)?'class="element-animation"':"" ?> style="position:relative;">
+					<td>
 						<?php
 							if($printer['Printer']['allow'])
 								echo $this->Html->image("/img/icons/1_users.png", array('class'=>'shared','title'=>"compartilhamento"));

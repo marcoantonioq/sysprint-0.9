@@ -1,8 +1,4 @@
 <?php
-// App::uses('ConnectionManager', 'Model');
-// $dataSource = ConnectionManager::getDataSource('default');
-// $username = $dataSource->config['password'];
-
 App::uses('AppController', 'Controller');
 
 class SettingsController extends AppController {
@@ -12,27 +8,15 @@ class SettingsController extends AppController {
 	}
 
 	public function index() {
-
 		if ($this->request->is('post')) {
 			$this->Setting->create();
-			// pr($this->request->data);
-			if(!empty($this->request->data['Setting'])) {
-				$data['Setting'] = $this->request->data['Setting'];
-				$data['Setting']['AD'] = $this->request->data['AD'];
-				$data['Setting']['EMAIL'] = $this->request->data['EMAIL'];
-				$data['Setting']['DATA'] = $this->request->data['DATA'];
-				$this->Setting->writejson($data);
+			if(!empty($this->request->data)) {
+				$this->Setting->writejson($this->request->data);
 			}
 		} else {
+			// pr($this->Setting->readjson());
 			$this->request->data = $this->Setting->readjson();
-			$this->request->data['AD'] = $this->request->data['Setting']['AD'];
-			$this->request->data['EMAIL'] = $this->request->data['Setting']['EMAIL'];
-			$this->request->data['DATA'] = $this->request->data['Setting']['DATA'];
-			// pr($this->request->data);
 		}
-
-		// $infoSystem = $this->Setting->info();
-		// $this->set(compact('infoSystem'));
 	}
 
 	public function restart($service = null){

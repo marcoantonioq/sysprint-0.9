@@ -1,4 +1,4 @@
-.element-animation{
+table.profile tr:first-child:hover{
   animation: animationFrames linear 5s;
   animation-iteration-count: infinite;
   transform-origin: 50% 50%;

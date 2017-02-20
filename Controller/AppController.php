@@ -56,20 +56,22 @@ class AppController extends Controller {
             $this->layout = 'admin';
         }
 
-        if (Configure::read("Setting.force_https") && !env('HTTPS')){
+        if (Configure::read("App.force_https") && !env('HTTPS')){
             $this->Security->blackHoleCallback = 'forceSSL';
             $this->Security->requireSecure();
         }
 
         if($this->request->is('ajax')){
-            $this->layout='reload';
+            $this->layout='ajax';
         }
-        
-        if( !Configure::read("Setting.auth")){
+
+        // pr(Configure::read("App")); 
+
+        if( !Configure::read("App.auth")){
             $this->Auth->allow();
         }
 
-        if( Configure::read("Setting.debug") ){
+        if( Configure::read("App.debug") ){
             Configure::write('debug',2);
         }
     }
@@ -82,7 +84,7 @@ class AppController extends Controller {
 
     public function isAuthorized($user = null){
 
-        
+
         if( $user['admin'] ){
             return true;
         }

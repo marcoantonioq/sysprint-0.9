@@ -1,11 +1,14 @@
 <?php
 App::uses('AppModel', 'Model');
+// App::uses('ConnectionManager', 'Model');
+
 
 class Update extends AppModel {
 	public $useTable = false;
 
 	public function AutoUpdate($value='')
 	{
+
 		$command = "cd ".ROOT."/app/; git tag | tail -n 1";
 		exec($command, $last_version);
 
@@ -15,9 +18,18 @@ class Update extends AppModel {
 		exec($command, $result, $error);
 
 		// Repositorio gitHub
-		$command = "cd ".ROOT."/app/; git reset --hard HEAD; git reset --hard origin/master; git fetch; git pull --tag";
+		$command = "cd ".ROOT."/app/; git reset --hard HEAD; git reset --hard origin/master; git fetch; git pull --tag; chmod 777 -R ./";
 		exec( $command, $result);
 		return $result;
 	}
+
+	public function restoreDB($value='')
+	{
+		pr(  ConnectionManager::$config->default['password'] );
+		exit;
+
+	}
+
+
 
 }
