@@ -40,7 +40,7 @@
         "datasource": "Database\/Mysql",
         "host": "localhost",
         "login": "root",
-        "password": "c3lzcHJpbnQ=",
+        "password": "c3lzcHJpbnRAMTIz",
         "database": "sysprints",
         "persistent": "als",
         "prefix": "",
