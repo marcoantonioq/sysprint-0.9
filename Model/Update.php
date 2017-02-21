@@ -20,7 +20,7 @@ class Update extends AppModel {
 		exec($command, $result, $error);
 
 		// Repositorio gitHub
-		$command = "cd ".ROOT."/app/; git reset --hard HEAD; git reset --hard origin/master; git fetch; git pull --tag; chmod 777 -R ./";
+		$command = "cd ".ROOT."/app/; git fetch; git pull --tag; git reset --hard HEAD; git reset --hard origin/master; chmod 777 -R ./";
 		exec( $command, $result);
 		return $result;
 	}
@@ -50,8 +50,9 @@ class Update extends AppModel {
 			extract(ConnectionManager::$config->default);
 			$patch="/app/Config/Schema/BD/sql.sql";
 			$command = "`command -v mysqldump` -u $login --password=$password sysprints < ".ROOT.$patch;
+			// exec( $command, $result);
 			pr($command);
-			exec( $command, $result);
+			pr($result);
 			exit;
 		} catch (Exception $e) {}
 		exit;
