@@ -44,17 +44,17 @@ class Update extends AppModel {
 	public function restoreDBDefault($value='')
 	{
 		$this->backupDB();
-		echo "iniciar reset";
 		try {
 			ConnectionManager::getDataSource('default');
 			extract(ConnectionManager::$config->default);
-			$patch="/app/Config/Schema/BD/sql.sql";
-			$command = "`command -v mysqldump` -u $login --password=$password sysprints < ".ROOT.$patch;
-			// exec( $command, $result);
-			pr($command);
-			pr($result);
-			exit;
+			// pr(ConnectionManager::$config->default);
+
+	    $conn = new PDO("mysql:host=$host;dbname=$database", $login, $password);
+	    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+			$query = file_get_contents(ROOT.'/app/Config/Schema/BD/sql.sql');
+			$stmt = $conn->prepare($query);
+			$stmt->execute();
+			$conn = null;
 		} catch (Exception $e) {}
-		exit;
 	}
 }

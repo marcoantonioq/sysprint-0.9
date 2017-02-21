@@ -1,3 +1,10 @@
+php_value memory_limit 30M
+php_value post_max_size 300M
+php_value upload_max_filesize 300M
+
+php_flag display_startup_errors On
+php_flag display_errors On
+
 <IfModule mod_rewrite.c>
 	RewriteEngine on
 	# Uncomment if you have a .well-known directory in the app folder, e.g. for the Let's Encrypt challenge

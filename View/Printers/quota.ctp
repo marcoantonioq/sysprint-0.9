@@ -46,7 +46,9 @@
             </p>
           </div>
         </tr>
-        <?php foreach ($printers as $key => $printer): ?>
+        <?php
+          foreach ($printers as $key => $printer):
+        ?>
         <tr>
     					<td>
                 <?php $updated_quota=$printer['Printer']['updated_quota']; ?>
@@ -72,7 +74,7 @@
         				'type'=>'reset',
         				'class'=>'btn btn-warning'
         			))." ";
-
+              if(!empty($updated_quota))
               echo "Regra atualizada em: ".date("d/m/H H:i:s", strtotime($updated_quota));
 
         			echo $this->Form->end();
