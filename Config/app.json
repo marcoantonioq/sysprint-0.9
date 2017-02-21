@@ -1,0 +1,63 @@
+{
+    "SYSApp": {
+        "status": "0",
+        "debug": "0",
+        "title": "IFPrints",
+        "hostname": "",
+        "locale": "pt-br",
+        "bootstraps": "",
+        "date_time_format": "D, M d Y H:i:s",
+        "force_https": "0",
+        "descrition": "",
+        "auth": "0"
+    },
+    "AD": {
+        "conect": "0",
+        "ldap_host": "",
+        "ldap_port": "389",
+        "base_dn": "OU=SYSPRINT",
+        "ldap_user": "",
+        "ldap_pass": "",
+        "suffix": "@sysprint.br",
+        "attr": "name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailphoto",
+        "filter": ""
+    },
+    "EMAIL": {
+        "email_notification": "0",
+        "transport": "Smtp",
+        "title": "SYSPrint",
+        "from": "marco.aq7@gmail.com",
+        "host": "ssl:\\\/\\\/smtp.gmail.com",
+        "port": "465",
+        "timeout": "30",
+        "username": "marco.aq7@gmail.com",
+        "password": "",
+        "log": "",
+        "charset": "",
+        "headerCharset": ""
+    },
+    "DATA": {
+        "datasource": "Database\/Mysql",
+        "host": "localhost",
+        "login": "root",
+        "password": "c3lzcHJpbnQ=",
+        "database": "sysprints",
+        "persistent": "als",
+        "prefix": "",
+        "encoding": "utf8"
+    },
+    "Server": {
+        "hostname": "",
+        "resolv_conf": ""
+    },
+    "Network": {
+        "DEFROUTE": "0",
+        "ONBOOT": "0",
+        "TYPE": "Ethernet",
+        "DEVICE": "",
+        "NAME": "",
+        "IPADDR": "",
+        "NETMASK": "",
+        "GATEWAY": ""
+    }
+}
