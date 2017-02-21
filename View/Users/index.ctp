@@ -1,22 +1,26 @@
+<?php
+    echo $this->Form->create('Filter', array('novalidate' => true));
+ ?>
+
 <div class="row-fluid">
     <div class="span12 well">
 		<?php echo $this->Html->link('Novo '.__('user'),
 				array('controller' => 'users', 'action' => 'add'),
 				array('class'=> 'btn btn-success')
 			)." ";
-
-			echo $this->Html->link('Sair',
-				array('app'=>true, 'controller' => 'users', 'action' => 'logout'),
-				array('class'=> 'btn')
-			);
 		?>
-
-	    <?php echo $this->Html->link('Sincronizar AD',
-				array('controller' => 'users', 'action' => 'syc'),
-				array('class'=> 'btn')
-			);
-	    ?>
-
+    <?php
+      if ($auth) {
+          echo $this->Form->button('Sincronizar AD',
+            array(
+              'formaction' => Router::url(
+                array('controller' => 'users','action' => 'syc')
+              ),
+              'class'=> 'btn', 'style'=>'margin-top: 5px;',
+            )
+    			);
+        }
+     ?>
 	    <?php echo $this->Html->link('Grupo',
 				array('controller' => 'groups', 'action' => 'index'),
 				array('class'=> 'btn')
@@ -26,11 +30,7 @@
 </div>
 
 <div class="row-fluid">
-	<?php
-			echo $this->Form->create('Filter');
-	 ?>
-
-	<div class="tabela">
+		<div class="tabela">
 		<table class='rwd-table'>
 		<thead>
 			<tr>

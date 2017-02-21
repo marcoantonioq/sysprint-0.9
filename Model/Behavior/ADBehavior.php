@@ -15,29 +15,26 @@ class ADBehavior extends ModelBehavior {
  	private static $connect;
 
 	public function __construct($configuration = array()) {
-	    $IFPrint = Configure::read('Setting.AD');
-	    self::$ldap_host = $IFPrint['ldap_host'];
-		self::$ldap_port = $IFPrint['ldap_port'];
-		self::$base_dn = $IFPrint['base_dn'];
-		self::$ldap_user = $IFPrint['ldap_user'];
-		self::$ldap_pass = base64_decode($IFPrint['ldap_pass']);
-		self::$suffix = $IFPrint['suffix'];
-		self::$attr = explode(",", $IFPrint['attr']);
-		self::$filter = $IFPrint['filter'];
+      $appjson = json_decode(@file_get_contents(APP."Config/app.json"));
+	    self::$ldap_host = $appjson->AD->ldap_host;
+  		self::$ldap_port = $appjson->AD->ldap_port;
+  		self::$base_dn = $appjson->AD->base_dn;
+  		self::$ldap_user = $appjson->AD->ldap_user;
+  		self::$ldap_pass = base64_decode($appjson->AD->ldap_pass);
+  		self::$suffix = $appjson->AD->suffix;
+  		self::$attr = explode(",", $appjson->AD->attr);
+  		self::$filter = $appjson->AD->filter;
 	}
 	private static function startConect( ){
-		// if(!ldap_bind(self::$connect, self::$ldap_user, self::$ldap_pass)){
-			$connect = ldap_connect( self::$ldap_host, self::$ldap_port);
-			ldap_set_option($connect, LDAP_OPT_NETWORK_TIMEOUT, 3);
-			ldap_set_option($connect, LDAP_OPT_TIMELIMIT, 3);
-			ldap_set_option($connect, LDAP_OPT_PROTOCOL_VERSION, 3);
-			$bind = ldap_bind($connect, self::$ldap_user, self::$ldap_pass); // or die("Erro bind");
-			self::$connect = $connect;
-		// }
+    try {
+  			$connect = ldap_connect( self::$ldap_host, self::$ldap_port);
+  			ldap_set_option($connect, LDAP_OPT_NETWORK_TIMEOUT, 3);
+  			ldap_set_option($connect, LDAP_OPT_TIMELIMIT, 3);
+  			ldap_set_option($connect, LDAP_OPT_PROTOCOL_VERSION, 3);
+        $bind = @ldap_bind($connect, self::$ldap_user, self::$ldap_pass); // or die("Erro bind");
+        self::$connect = $connect;
+      } catch (Exception $e) { }
 	}
-
-
-
 	// ------------ Public functions ------------- //
 
 	public static function testConect(){
@@ -51,9 +48,12 @@ class ADBehavior extends ModelBehavior {
 	}
 
 	public static function ldapSearch($filter){
-		self::startConect();
-		$read = ldap_search(self::$connect, self::$base_dn, $filter, self::$attr); # or die("Erro search");
-		$result = ldap_get_entries(self::$connect, $read);
+    $result=null;
+    try {
+      self::startConect();
+      $read = ldap_search(self::$connect, self::$base_dn, $filter, self::$attr); # or die("Erro search");
+      $result = ldap_get_entries(self::$connect, $read);
+    } catch (Exception $e) {}
 		return $result;
 	}
 
@@ -63,7 +63,7 @@ class ADBehavior extends ModelBehavior {
 	}
 
 	public function getUser($username){
-	    $filter = "(".self::$filter."(name={$username}))"; // username
+      $filter = "(".self::$filter."(name={$username}))"; // username
 	    $user = self::ldapSearch($filter);
 	    return $user;
 	}
@@ -72,7 +72,7 @@ class ADBehavior extends ModelBehavior {
 		foreach ($users as $key => $user) {
 			if (empty($user['User']['username']))
 				continue;
-      		$users[$key]['User']['name'] = $user['User']['username'];
+  		$users[$key]['User']['name'] = $user['User']['username'];
 			$userAD = $this->getUser($user['User']['username']);
 			if (!empty($userAD['0']['displayname']['0']))
         	$users[$key]['User']['name'] = $userAD['0']['displayname']['0'];
@@ -86,11 +86,12 @@ class ADBehavior extends ModelBehavior {
 			}
 		}
 		foreach ($users as $key => $user) {
-			unset($user["User"]["password"]);
 			unset($user["User"]["status"]);
-			$Model->save($user);
+      unset($user["User"]["password"]);
+      try {
+        $Model->save($user);
+      } catch (Exception $e) {}
 		}
-		// pr($users); exit;
 		return $users;
 	}
 

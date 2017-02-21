@@ -7,15 +7,15 @@ function object_to_array($obj) {
        $obj = get_object_vars($obj);
    return is_array($obj) ? array_map(__METHOD__, $obj) : $obj;
 }
-$appjson = @file_get_contents(APP."Config/app.json");
-$config_json = object_to_array(json_decode($appjson));
-// pr($config_json['SYSApp']);
-// Configure::write('App.SYSApp', $config_json['SYSApp']);
 
-// App::uses('ConnectionManager', 'Model');
-$config_json['DATA']['password'] = base64_decode($config_json['DATA']['password']);
-@ConnectionManager::create('default',$config_json['DATA']);
-
+try {
+  $appjson = @file_get_contents(APP."Config/app.json");
+  $config_json = object_to_array(json_decode($appjson));
+  $config_json['DATA']['password'] = base64_decode($config_json['DATA']['password']);
+  @ConnectionManager::create('default',$config_json['DATA']);
+} catch (Exception $e) {
+  echo "";
+}
 
 class EmailConfig {
 	public $default;

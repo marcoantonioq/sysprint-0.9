@@ -14,7 +14,7 @@ class SettingsController extends AppController {
 				$this->Setting->writejson($this->request->data);
 			}
 		} else {
-			// pr($this->Setting->readjson());
+			// pr($this->Setting->readjson()); exit;
 			$this->request->data = $this->Setting->readjson();
 		}
 	}

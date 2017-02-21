@@ -1,10 +1,15 @@
 
+<?php echo $this->Html->script(
+    array(
+      'settings.js',
+    )
+  ); ?>
+
 <?php
   // auto update configurado em Setting.js
   echo $this->Form->create('Setting', array());
   $this->Form->inputDefaults(array(
     'class'=>'span12',
-    // 'div'=>'controls',
     'label'=>false,
   ));
 ?>
@@ -383,9 +388,3 @@
 		?>
   </div>
 </div>
-
-<?php echo $this->Html->script(
-    array(
-      'settings.js',
-    )
-  ); ?>

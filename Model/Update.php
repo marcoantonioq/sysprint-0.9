@@ -8,7 +8,6 @@ class Update extends AppModel {
 
 	public function AutoUpdate($value='')
 	{
-
 		$command = "cd ".ROOT."/app/; git tag | tail -n 1";
 		exec($command, $last_version);
 
@@ -23,13 +22,33 @@ class Update extends AppModel {
 		return $result;
 	}
 
-	public function restoreDB($value='')
-	{
-		pr(  ConnectionManager::$config->default['password'] );
-		exit;
-
+	public function backupDB($patch=""){
+		$return=false;
+		try {
+			ConnectionManager::getDataSource('default');
+			extract(ConnectionManager::$config->default);
+			if (empty($patch)) {
+				$patch="/app/tmp/backupDB_`date +%Y-%m-%d_%H-%M-%S`.sql";
+			}
+			$command = "`command -v mysqldump` -u $login --password=$password $database > ".ROOT.$patch;
+			exec( $command, $result);
+			$return=true;
+		} catch (Exception $e) {}
+		return $return;
 	}
 
 
-
+	public function restoreDBDefault($value='')
+	{
+		$this->backupDB();
+		echo "iniciar reset";
+		try {
+			ConnectionManager::getDataSource('default');
+			extract(ConnectionManager::$config->default);
+			$patch="/app/Config/Schema/BD/sql.sql";
+			$command = "`command -v mysqldump` -u $login --password=$password sysprints < ".ROOT.$patch;
+			pr($command);
+		} catch (Exception $e) {}
+		exit;
+	}
 }

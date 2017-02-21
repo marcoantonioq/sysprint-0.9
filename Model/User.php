@@ -18,9 +18,10 @@ class User extends AppModel {
 
 	public $validate = array(
 		'username' => array(
-			'notEmpty' => array(
-				'rule' => array('notEmpty'),
-			),
+			'ruleRequired' => array(
+	      'rule' => 'notEmpty',
+	      'message' => 'Usuário inválido'
+	    ),
 			'unique' => array(
 				'rule' => 'isUnique',
 				'required' => 'create',

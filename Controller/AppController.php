@@ -49,6 +49,7 @@ class AppController extends Controller {
 
     public function beforeFilter() {
         $this->Security->validatePost = false;
+        $this->SYSApp = json_decode(@file_get_contents(APP."Config/app.json"))->SYSApp;
 
         if( !empty($this->request->params['prefix']) && $this->request->params['prefix'] == 'app') {
             $this->layout = 'user';
@@ -56,23 +57,21 @@ class AppController extends Controller {
             $this->layout = 'admin';
         }
 
-        if (Configure::read("App.force_https") && !env('HTTPS')){
-            $this->Security->blackHoleCallback = 'forceSSL';
-            $this->Security->requireSecure();
-        }
-
         if($this->request->is('ajax')){
             $this->layout='ajax';
         }
 
-        // pr(Configure::read("App")); 
-
-        if( !Configure::read("App.auth")){
-            $this->Auth->allow();
+        if( $this->SYSApp->debug ){
+            Configure::write('debug',2);
         }
 
-        if( Configure::read("App.debug") ){
-            Configure::write('debug',2);
+        if ($this->SYSApp->force_https && !env('HTTPS')){
+          $this->Security->blackHoleCallback = 'forceSSL';
+          $this->Security->requireSecure();
+        }
+
+        if( !$this->SYSApp->auth){
+            $this->Auth->allow();
         }
     }
 
@@ -83,12 +82,9 @@ class AppController extends Controller {
     }
 
     public function isAuthorized($user = null){
-
-
         if( $user['admin'] ){
             return true;
         }
-
         if( !empty($this->request->params['prefix'])) {
             if($this->request->params['prefix'] == 'app')
                 return true;

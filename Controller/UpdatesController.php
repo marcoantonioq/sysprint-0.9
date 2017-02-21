@@ -26,4 +26,14 @@ class UpdatesController extends AppController {
 
 		$this->set(compact('version', 'return'));
 	}
+
+	public function restoreDB() {
+
+		if ($this->request->is('post'))
+		{
+				$return = $this->Update->restoreDBDefault();
+				echo $this->Session->setFlash("Restauração completa! (Backup salvo em tmp)", 'layout/success');
+	  }
+		return $this->redirect(array('action' => 'index'));
+	}
 }

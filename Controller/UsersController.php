@@ -29,14 +29,18 @@ class UsersController extends AppController {
 		$this->User->recursive = 1;
 		$groups = $this->User->Group->find('list');
 		$users = $this->Paginator->paginate();
-		$this->set(compact('groups', 'users'));
+		$auth = $this->SYSApp->auth;
+		$this->set(compact('groups', 'users', 'auth'));
 	}
 
 	public function syc() {
 		$this->render(false);
-		$this->User->recursive = 0;
+		if ($this->request->is('post')) {
+        $this->Paginator->settings = $this->User->action($this->request->data);
+        echo $this->Session->setFlash('Filtro definido!', 'layout/success');
+  	}
 		$this->User->recursive = -1;
-		$users = $this->User->find("all");
+		$users = $this->Paginator->paginate();
 		$users = $this->User->sycAD($users);
 		$this->redirect($this->referer());
 	}

@@ -243,7 +243,7 @@ begin
 		`week_count`=_week_count + _var,
 		`month_count`=_month_count + _var,
 		`job_count`=_job_count + _var,
-		`updated`=SYSDATE() 
+		`updated`=SYSDATE()
 	where id=NEW.user_id;
 end$$
 
@@ -259,7 +259,7 @@ BEGIN
 	DECLARE printer_name VARCHAR(255);
 	SET user_name = (SELECT name FROM users WHERE id = OLD.user_id);
 	SET printer_name = (SELECT name FROM printers WHERE id = OLD.printer_id);
-    
+
 	INSERT INTO arq_jobs(
 		`id`,
 		`user`,
@@ -273,7 +273,7 @@ BEGIN
 		`status`,
 		`created`,
 		`updated`)
-	VALUES( 
+	VALUES(
 		OLD.id,
 		user_name,
 		printer_name,
@@ -285,7 +285,7 @@ BEGIN
 		OLD.params,
 		OLD.status,
 		OLD.created,
-		OLD.updated		
+		OLD.updated
 	);
 END$$
 
