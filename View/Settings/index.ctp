@@ -137,10 +137,11 @@
 			'title'=>ucfirst(__('suffix')),
 		));
     echo $this->Form->input('AD.attr', array(
-			'placeholder'=>'ADAttr: name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailPhoto',
-      'value'=>'name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailphoto',
+			'placeholder'=>'ADAttr: name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailPhoto,name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailphoto,memberof',
+      // 'value'=>'name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailphoto',
 			'title'=>ucfirst(__('attr')),
 		));
+    echo "<i>Ex: name, displayname, mail, mobile, homephone, telephonenumber, streetaddress, postalcode, physicaldeliveryofficename, l, group, thumbnailphoto, memberof</i>";
     echo $this->Form->input('AD.filter', array(
       'placeholder'=>ucfirst(__('filter')),
 			'title'=>ucfirst(__('filter')),

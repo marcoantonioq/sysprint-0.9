@@ -1,6 +1,6 @@
 <div class="row-fluid">
+<?php pr($user['User']); ?>
 
-	
 	<div class='span8'>
 	    <dl>
 			<dt>Thumbnail Photo</dt>
@@ -49,8 +49,8 @@
 	<div class="span4">
 		<div class="actions form-horizontal well ucase">
 			<h3>Ações</h3>
-			
-			<?php echo $this->Html->link('Voltar', 
+
+			<?php echo $this->Html->link('Voltar',
 				array( 'action' => 'index'),
 				array('class'=> 'btn btn-block')
 			); ?>
@@ -62,7 +62,7 @@
             <?php echo $this->Html->link('Editar',
                 array( 'action' => 'edit', $this->params['pass'][0]),
                 array('class'=> 'btn btn-block btn-warning')
-            ); ?>			
+            ); ?>
 			<?php echo $this->Form->postLink('Apagar',
 				array( 'action' => 'delete', $this->params['pass'][0]),
                 array('class'=> 'btn btn-block btn-danger', 'style'=>'margin-top: 5px;'),
@@ -74,17 +74,17 @@
 
 
 <div class="row-fluid">
-		
-		
+
+
 <?php if (!empty($user['Job'])): ?>
 
 		<h3>
 			<a href="#"  id="Job">
 				<?php echo __('Jobs'); ?> (30)</a>
 		</h3>
-		
+
 	<div class="tabela " id="Job">
-		<?php 
+		<?php
 			// pr($prints);
 		?>
 	<table class='rwd-table'>
@@ -104,10 +104,10 @@
 		<tr>
 			<td data-th="<?php echo ucfirst(__('printer_id')) ?>" >
 				<?php echo $this->Html->link(
-					ucfirst($prints[$job['printer_id']]), 
+					ucfirst($prints[$job['printer_id']]),
 					array(
-						'controller'=>'printers', 
-						'action'=>'view', 
+						'controller'=>'printers',
+						'action'=>'view',
 						$job['printer_id']
 					)
 				); ?>
@@ -120,11 +120,11 @@
 			<td data-th="<?php echo ucfirst(__('created')) ?>" ><?php echo $job['created']; ?></td>
 			<td data-th="Ações" class="actions">
 
-			<?php 
-				echo $this->Html->link('<span class="icon12 brocco-icon-search"></span>', 
+			<?php
+				echo $this->Html->link('<span class="icon12 brocco-icon-search"></span>',
 					array(
-						'controller' => 'jobs', 
-						'action' => 'view', 
+						'controller' => 'jobs',
+						'action' => 'view',
 						$job['id']
 					),
 					array(
@@ -132,12 +132,12 @@
 						'title'=>'Visualizar',
 						'class'=>'view',
 					)
-				); 
-				
-				echo $this->Html->link('<span class="icon12 brocco-icon-pencil"></span>', 
+				);
+
+				echo $this->Html->link('<span class="icon12 brocco-icon-pencil"></span>',
 					array(
-						'controller' => 'jobs', 
-						'action' => 'edit', 
+						'controller' => 'jobs',
+						'action' => 'edit',
 						$job['id']
 					),
 					array(
@@ -157,6 +157,6 @@
 <?php endif; ?>
 
 
-		
+
 
 </div>

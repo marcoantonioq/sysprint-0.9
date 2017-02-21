@@ -50,7 +50,7 @@
 					?>
 				</th>
 
-				<th>
+				<th class="hide">
 					<?php
 						echo $this->Paginator->sort('group_id', ucfirst(__('group')));
 					?>

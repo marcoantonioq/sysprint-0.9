@@ -87,11 +87,12 @@ class UsersController extends AppController {
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Inválido user'));
 		}
-		$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
+		$options = array(
+			'recursive'=>2,
+			'conditions' => array('User.' . $this->User->primaryKey => $id)
+		);
 		$user = $this->User->find('first', $options);
-
 		$prints = $this->User->Job->Printer->find('list');
-
 		$this->set(compact('user', 'prints'));
 	}
 

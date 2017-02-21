@@ -38,12 +38,17 @@ class Group extends AppModel {
 
 		public function afterSave($created, $options = array())
 		{
-			$this->User->updateAll(
-				array('User.quota' => $this->data['Group']['quota']),
-				array('OR'=>array(
-					'User.id'=> $this->data['User']['User']
-				))
-			);
+			if(!empty($this->data['User']['User'])){
+				$this->User->updateAll(
+					array(
+						'User.quota' => $this->data['Group']['quota'],
+						'User.admin' => $this->data['Group']['admin']
+					),
+					array('OR'=>array(
+						'User.id'=> $this->data['User']['User']
+					))
+				);
+			}
 			return true;
 		}
 /**
@@ -66,5 +71,27 @@ class Group extends AppModel {
 			'finderQuery' => '',
 		)
 	);
+
+	public function get_ID($name)
+	{
+		$name = strtoupper($name);
+		$group_id = key($this->find('list', array(
+			'recursive'=> -1,
+			'conditions'=>array('Group.name'=>$name)
+		)));
+
+		if(empty($group_id)){
+			$data = array('Group' => array(
+				'name'=>$name,
+				'quota'=>0,
+			));
+			$this->create();
+			$this->save($data);
+			echo "Criado: $name: {$this->id}<br>";
+			$group_id = $this->id;
+		}
+		// echo "$name: $group_id<br>";
+		return $group_id;
+	}
 
 }

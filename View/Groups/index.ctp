@@ -60,13 +60,13 @@
 					?>
 				</th>
 
-				<th>
+				<th class="hide">
 					<?php
 						echo $this->Paginator->sort('descrition', ucfirst(__('descrition')));
 					?>
 				</th>
 
-				<th>
+				<th class="hide">
 					<?php
 						echo $this->Paginator->sort('ad', ucfirst(__('ad')));
 					?>

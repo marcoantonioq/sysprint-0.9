@@ -21,10 +21,6 @@
 				'label'=>ucfirst(__('descrition')),
 			));
 
-			echo $this->Form->input('ad', array(
-				'label'=>ucfirst(__('ad')),
-			));
-
 			echo $this->Form->input('admin', array(
 				'label'=>ucfirst(__('admin')),
 			));
