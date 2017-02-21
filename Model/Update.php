@@ -11,7 +11,10 @@ class Update extends AppModel {
 		$command = "cd ".ROOT."/app/; git tag | tail -n 1";
 		exec($command, $last_version);
 
+
+
 		// Backups3
+		$this->backupDB();
 		$patch="/app/tmp/backup_`date +%Y-%m-%d`_v".$last_version[0];
 		$command = "mkdir ".ROOT."$patch; cp -rf ".ROOT."/app/{Config,Controller,Vendor,Model,View,Console,webroot} ".ROOT.$patch;
 		exec($command, $result, $error);
@@ -48,6 +51,8 @@ class Update extends AppModel {
 			$patch="/app/Config/Schema/BD/sql.sql";
 			$command = "`command -v mysqldump` -u $login --password=$password sysprints < ".ROOT.$patch;
 			pr($command);
+			exec( $command, $result);
+			exit;
 		} catch (Exception $e) {}
 		exit;
 	}

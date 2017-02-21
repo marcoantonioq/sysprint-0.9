@@ -15,8 +15,8 @@
 
       echo $this->Form->postLink('DB Defaul',
       	array('action' => 'restoreDB'),
-      	array('class'=> 'btn btn'),
-                __('Tem certeza de que deseja restaurar banco de dados padrão? (Faça backup)')
+      	array('class'=> 'btn btn-danger'),
+                __('Tem certeza de que deseja restaurar banco de dados padrão de fabrica? (Faça backup)')
       )." ";
     ?>
     </div>
