@@ -9,7 +9,7 @@ class ServerBehavior extends ModelBehavior {
   public static $sort;
   public static $uniq;
   public static $mpstat;
-  
+
 
 
 	protected $_configuration = array(
@@ -95,12 +95,12 @@ class ServerBehavior extends ModelBehavior {
 	}
 
 	public function swap() {
+    $result=array();
 		exec(
 	      '/bin/cat /proc/swaps | /usr/bin/tail -n +2 | '.
-	      '/usr/bin/awk \'{print $1","$2","$3","$4","$5}\'',
-	      $result
+	      '/usr/bin/awk \'{print $1","$2","$3","$4","$5}\'',$result
 	  );
-		return $result[0];
+		return $result;
 	}
 
 	public function diskStats(){
@@ -277,7 +277,7 @@ class ServerBehavior extends ModelBehavior {
 		exec("/bin/systemctl status  $args.service | /usr/bin/awk '{print $2}'",$result);
 		return $result[2];
 	}
-  
+
   public function grepStatus($args){
     exec("/bin/ps aux | /bin/grep $args | /bin/grep -v grep &>/dev/null && echo active || echo inactive",$result);
     return $result[0];
@@ -294,6 +294,6 @@ class ServerBehavior extends ModelBehavior {
     return $result;
   }
 
-  
+
 
 }

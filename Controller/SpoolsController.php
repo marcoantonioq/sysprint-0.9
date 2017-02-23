@@ -41,12 +41,13 @@ class SpoolsController extends AppController {
  * @return void
  */
 	public function index() {
-		if ($this->request->is('post')) {
-            $this->Paginator->settings = $this->Spool->action($this->request->data);
-            echo $this->Session->setFlash('Filtro definido!', 'layout/success');
-        }
-		$this->Spool->recursive = 0;
-		$this->set('spools', $this->Paginator->paginate());
+		return $this->redirect(array('controller'=>'printers', 'action' => 'index'));
+		// if ($this->request->is('post')) {
+    //         $this->Paginator->settings = $this->Spool->action($this->request->data);
+    //         echo $this->Session->setFlash('Filtro definido!', 'layout/success');
+    //     }
+		// $this->Spool->recursive = 0;
+		// $this->set('spools', $this->Paginator->paginate());
 	}
 
 	public function active() {
@@ -147,7 +148,7 @@ class SpoolsController extends AppController {
 		$this->set(compact('users', 'printers'));
 	}
 
-	
+
 /**
  * add method
  *
@@ -186,7 +187,7 @@ class SpoolsController extends AppController {
 	public function app_upload() {
 		$this->layout = 'ajax';
 		$this->render(false);
-		
+
 		$file = array("Spool" => array(
             "user_id" => $this->Session->read("Auth.User.id"),
             "printer_id" => $_REQUEST['print_id'],
@@ -198,7 +199,7 @@ class SpoolsController extends AppController {
         ));
 
         $message = $this->Spool->sendPrint($file);
-		
+
 
 	}
 

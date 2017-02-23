@@ -10,7 +10,10 @@ class Spool extends AppModel {
 	public $useTable = false;
 	public $order = array("Spool.updated"=>"DESC");
 
-	public $actsAs = array('Convert');
+	public $actsAs = array(
+		'Convert',
+		'Lpadmin',
+	);
 
 /**
  * Validation rules
@@ -99,6 +102,7 @@ class Spool extends AppModel {
 		return true;
 	}
 
+	// migrar para o LpadminBehavior
 	public function sendPrint($data){
 
 		$error_log = "";
@@ -110,8 +114,8 @@ class Spool extends AppModel {
 		// adicionar o ip de origem
 
 		foreach ($data['Spool']['file'] as $key => $file) {
-			$path = $this->convertTo($file); 
-			
+			$path = $this->convertTo($file);
+
 			if ($path) {
 				$comand = "lp -U {$user['User']['username']} -d {$print['Printer']['name']} $params $path";
 				// pr($comand); exit;
@@ -121,6 +125,9 @@ class Spool extends AppModel {
 					$error_log .= "<a style='color:red'>Erro<a> ao enviar a impressão: {$file['name']}<br>Procure o administrador: Quota limit reached.";
 				}
 			}
+			$cmd = "find /tmp/*/tmp/files/ -ctime +1 #-exec rm -rf {} \;";
+			exec($cmd, $result);
+
 		}
 		return $error_log;
 	}

@@ -70,6 +70,7 @@ class AppController extends Controller {
           $this->Security->requireSecure();
         }
 
+        // $this->Auth->allow();
         if( !$this->SYSApp->auth){
             $this->Auth->allow();
         }

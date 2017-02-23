@@ -64,6 +64,11 @@
 				array( 'action' => 'indexedit'),
 				array('class'=> 'btn btn-block')
 			); ?>
+
+			<?php  echo $this->Html->link('Configurações',
+				array('action' => 'view', $this->params['pass'][0]),
+				array('class'=> 'btn btn-block btn-success')
+			); ?>
 		</div>
 	</div>
 

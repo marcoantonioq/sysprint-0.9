@@ -13,4 +13,5 @@ ps aux | grep "setPrivilege" | grep -v grep ||
 $php $ROOT_APP/Console/cake.php quota setPrivilege
 sleep 1;
 
-chown www-data.www-data -R $ROOT_APP/tmp/
+# chown www-data.www-data -R $ROOT_APP/tmp/
+chmod 777 -R  $ROOT_APP/tmp/

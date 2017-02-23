@@ -1,6 +1,6 @@
 <div class="row-fluid">
 
-	
+
 	<div class='span8'>
 	    <dl>
 			<dt><?php echo ucfirst(__('id')); ?></dt>
@@ -39,8 +39,8 @@
 	<div class="span4">
 		<div class="actions form-horizontal well ucase">
 			<h3>Ações</h3>
-			
-			<?php echo $this->Html->link('Voltar', 
+
+			<?php echo $this->Html->link('Voltar',
 				array( 'action' => 'index'),
 				array('class'=> 'btn btn-block')
 			); ?>

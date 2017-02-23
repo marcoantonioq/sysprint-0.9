@@ -18,15 +18,28 @@ class QuotaShell extends AppShell {
 
     $prints = $this->User->Printer->find('all', array(
       'recursive'=> 1,
-      'fields' => array('Printer.id', 'Printer.allow', 'Printer.name'),
+      'fields' => array(
+        'Printer.id',
+        'Printer.allow',
+        'Printer.name',
+        'job-quota-period',
+        'job-page-limite',
+        'job-k-limit',
+      ),
       'User' => array(
-        'fields' => array('User.id')
+        'fields' => array('User.id'),
       )
     ));
 
-    // pr($prints);
-
     foreach ($prints as $print) {
+      // Quota por impressora
+      $job_quota_period=(empty( $print['Printer']['job-quota-period'] ) ) ? 0 : $print['Printer']['job-quota-period'];
+			$job_page_limit=(empty( $print['Printer']['job-page-limite'] ) ) ? 0 : $print['Printer']['job-page-limite'];
+			$job_k_limit=(empty( $print['Printer']['job-k-limit'] ) ) ? 0 : $print['Printer']['job-k-limit'];
+			$cmd = "/usr/sbin/lpadmin -p '{$print['Printer']['name']}' -o job-quota-period={$job_quota_period} -o job-page-limit={$job_page_limit} -o job-k-limit={$job_k_limit}";
+			exec($cmd, $result, $error); pr($cmd);
+
+      pr($print['User']);
 
     	if ($print['Printer']['allow']){
     		$cmd = "/usr/sbin/lpadmin -p {$print['Printer']['name']} -u allow:all";

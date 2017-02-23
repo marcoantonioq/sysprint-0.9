@@ -74,15 +74,9 @@ class PrintersController extends AppController {
  * @return void
  */
 	public function view($id = null) {
-		if (!$this->Printer->exists($id)) {
-			throw new NotFoundException(__('Inválido printer'));
-		}
-
-		$options = array('conditions' => array('Printer.' . $this->Printer->primaryKey => $id));
-		$printer = $this->Printer->find('first', $options);
-
-		$users = $this->Printer->User->find('list');
-		$this->set(compact('printer', 'users'));
+		$printer = $this->Printer->getConfigPrinter('list');
+		pr($printer);
+		$this->set(compact('printer'));
 	}
 
 	public function printStatus($id = null) {
@@ -163,11 +157,8 @@ class PrintersController extends AppController {
 
 	public function quota($id = null) {
 		if ($this->request->is(array('post', 'put'))) {
-			
 			if ($this->Printer->saveAll($this->request->data)) {
-				$this->Printer->setQuota($this->request->data);
 				$this->Session->setFlash(__('Novas regras foram salvas.'), 'layout/success');
-				// return $this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('Não pôde ser salvo. Por favor, tente novamente.'), 'layout/error');
 			}
