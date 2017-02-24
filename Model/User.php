@@ -92,6 +92,11 @@ class User extends AppModel {
 	{
 	}
 
+	public function beforeFilter($filter='')
+	{
+		# code...
+	}
+
 	public function get_ID($username)
 	{
 		$username = strtolower($username);

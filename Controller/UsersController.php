@@ -80,7 +80,6 @@ class UsersController extends AppController {
             return true;
         }
         $this->redirect($this->referer());
-
 	}
 
 	public function view($id = null) {

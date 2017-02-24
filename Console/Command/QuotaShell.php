@@ -11,11 +11,6 @@ class QuotaShell extends AppShell {
     $users_allow = array(); // lista de usuários liberados
     $users_deny = array(); // lista de usuários deny
 
-    // Lista com as impressoras
-    // $User->Printer->unbindModel(array(
-    // 	'hasMany' => array('Job')
-    // ), false );
-
     $prints = $this->User->Printer->find('all', array(
       'recursive'=> 1,
       'fields' => array(
@@ -25,9 +20,6 @@ class QuotaShell extends AppShell {
         'job-quota-period',
         'job-page-limite',
         'job-k-limit',
-      ),
-      'User' => array(
-        'fields' => array('User.id'),
       )
     ));
 
@@ -39,8 +31,6 @@ class QuotaShell extends AppShell {
 			$cmd = "/usr/sbin/lpadmin -p '{$print['Printer']['name']}' -o job-quota-period={$job_quota_period} -o job-page-limit={$job_page_limit} -o job-k-limit={$job_k_limit}";
 			exec($cmd, $result, $error); pr($cmd);
 
-      pr($print['User']);
-
     	if ($print['Printer']['allow']){
     		$cmd = "/usr/sbin/lpadmin -p {$print['Printer']['name']} -u allow:all";
     		pr($cmd); exec($cmd);
@@ -49,7 +39,6 @@ class QuotaShell extends AppShell {
 
       	// Padrão negado para todos usuários
     	$cmd = "/usr/sbin/lpadmin -p {$print['Printer']['name']} -u deny:all"; pr($cmd); exec($cmd);
-
       	//  get lista de usuários
     	foreach ( $print['User'] as $user) {
         // verifica status do usuário

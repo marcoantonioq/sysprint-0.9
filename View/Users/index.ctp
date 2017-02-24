@@ -89,9 +89,9 @@
 					<?php echo $this->Form->checkbox('all.row', array( 'id'=>'allrow' ));?>
 				</td>
 
-					<?php echo $this->Filter->conditions('id'); ?>
+          <?php echo $this->Filter->conditions('username'); ?>
 
-					<?php echo $this->Filter->conditions('name'); ?>
+          <?php echo $this->Filter->conditions('name'); ?>
 
 					<?php echo $this->Filter->conditionsSelect('group_id', $groups); ?>
 
@@ -155,11 +155,11 @@
 						<?php echo ucfirst($user['User']['username']); ?></td>
 					<td data-th="Nome" >
 						<div class="avatardiv">
-							<?php if(!empty($user['User']['thumbnailphoto'])): ?>
-								<?php echo "<img src='{$user['User']['thumbnailphoto']}' />"; ?>
-							<?php elseif(@$user['User']['name']{0}): ?>
-								<?php echo ucwords($user['User']['name']{0}); ?>
-							<?php endif; ?>
+							<?php
+                echo (!empty($user['User']['thumbnailphoto'])) ?
+                  "<img src='{$user['User']['thumbnailphoto']}' />" :
+                  ucwords($user['User']['name']{0});
+              ?>
 						</div>
 						<?php echo ucfirst( (empty($user['User']['name'])) ? $user['User']['username'] : $user['User']['name'] ); ?></td>
 					<td data-th="Grupo" >
