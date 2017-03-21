@@ -50,16 +50,9 @@ class Job extends AppModel {
 	);
 
 
-	// public function get_ID($job){
-	// 	return key($this->find('list', array(
-	// 		'conditions'=>array('Job.'=>$job)
-	// 	)));
-	// }
-
-
 	public function beforeFind($results, $primary = false)
 	{
-			// $this->reloadLog();
+
 	}
 	public function afterFind($results, $primary = false)
 	{

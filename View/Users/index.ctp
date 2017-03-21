@@ -4,19 +4,18 @@
 
 <div class="row-fluid">
     <div class="span12 well">
-		<?php echo $this->Html->link('Novo '.__('user'),
+		<?php echo $this->Html->link('Novo',
 				array('controller' => 'users', 'action' => 'add'),
 				array('class'=> 'btn btn-success')
 			)." ";
-		?>
-    <?php
+
       if ($auth) {
           echo $this->Form->button('Sincronizar AD',
             array(
               'formaction' => Router::url(
                 array('controller' => 'users','action' => 'syc')
               ),
-              'class'=> 'btn', 'style'=>'margin-top: 5px;',
+              'class'=> 'btn',
             )
     			);
         }
@@ -61,6 +60,11 @@
 						echo $this->Paginator->sort('quota', ucfirst(__('quota')));
 					?>
 				</th>
+				<th>
+					<?php
+						echo $this->Paginator->sort('month_count', ucfirst("USED"));
+					?>
+				</th>
 
 				<th>
 					<?php
@@ -96,6 +100,7 @@
 					<?php echo $this->Filter->conditionsSelect('group_id', $groups); ?>
 
 					<?php echo $this->Filter->conditions('Group.quota'); ?>
+					<?php echo $this->Filter->conditions('Group.month_count'); ?>
 
 					<?php echo $this->Filter->conditions('status'); ?>
 
@@ -171,6 +176,8 @@
 						</td>
 					<td data-th="Quota" >
 						<?php echo $user['User']['quota']; ?></td>
+					<td data-th="month_count" >
+						<?php echo $user['User']['month_count']; ?></td>
 					<td data-th="Status" >
 						<?php echo $this->Link->status($user['User']['id'], $user['User']['status']); ?></td>
 					<td></td>

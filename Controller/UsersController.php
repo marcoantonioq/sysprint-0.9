@@ -42,14 +42,14 @@ class UsersController extends AppController {
 		$this->User->recursive = -1;
 		$users = $this->Paginator->paginate();
 		$users = $this->User->sycAD($users);
-		$this->redirect($this->referer());
+		$this->redirect(array('controller' => 'users', 'action'=>'index'));
 	}
 
 	public function app_login() {
 		$this->forceSSL();
 	    $this->layout = "login";
         if ($this->request->is('post')) {
-        	$this->User->AuthAD($this->request->data); // login AD
+        		$this->SYSApp->auth && $this->User->AuthAD($this->request->data); // login AD
             if ($this->Auth->login()) {
                 $this->Session->setFlash('Logado com sucesso.', 'layout/success');
                 return $this->redirect(array('controller' => 'printers', 'action'=>'index'));
@@ -112,15 +112,17 @@ class UsersController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->User->create();
-			// pr($this->request->data);
-			// exit;
 
 			if ($this->User->save($this->request->data)) {
 				$user = $this->User->find("first", array(
 					'recursive' => -1,
 					'conditions'=>array('User.username'=> $this->request->data['User']['username'])
 				));
-				$user = $this->User->sycAD(array('0'=>$user));
+				if ($this->SYSApp->auth) {
+					$user = $this->User->sycAD(array('0'=>$user));
+					pr($user);
+				}
+				// pr($this->request->data); exit;
 
 				$this->Session->setFlash(__('Foi salvo.'), 'layout/success');
 				return $this->redirect(array('action' => 'index'));

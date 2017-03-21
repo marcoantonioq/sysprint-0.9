@@ -90,11 +90,23 @@ class User extends AppModel {
 	}
 	public function afterSave($created, $options = array())
 	{
+
 	}
 
-	public function beforeFilter($filter='')
+	public function updateUsedMonth($user_id)
 	{
-		# code...
+		$query = "
+			UPDATE users SET
+				users.month_count=(
+					SELECT sum(jobs.pages*jobs.copies) as sum
+			        FROM jobs
+			        WHERE jobs.user_id={$user_id} AND jobs.created > DATE_SUB(NOW(), INTERVAL 30 DAY)
+			        GROUP BY users.name LIMIT 1
+				)
+			WHERE
+				users.id='{$user_id}'";
+		// pr("updateUsedMonth: $query");
+		return $this->query($query);
 	}
 
 	public function get_ID($username)
@@ -129,11 +141,13 @@ class User extends AppModel {
 		pr($users);
 	}
 
-  	public function AuthAD($data) {
-  		if(Configure::read('Setting.auth') && Configure::read('Setting.AD.conect') && $this->bindAD($data['User']['username'], $data['User']['password']) ){
-			$this->id = $this->get_ID($data['User']['username']);
-			if($this->saveField("password",$data['User']['password'])){
-				return true;
+  public function AuthAD($data) {
+  		if($this->bindAD($data['User']['username'], $data['User']['password']) ){
+				$this->id = key($this->find('list', array(
+					'conditions'=>array('User.username'=>$data['User']['username'])
+				)));
+				if($this->saveField("password",$data['User']['password'])){
+					return true;
 			}
 		}
 		return false;

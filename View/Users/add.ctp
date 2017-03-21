@@ -31,18 +31,6 @@
 				'label'=>ucfirst(__('quota')),
 			));
 
-			echo $this->Form->input('day_count', array(
-				'label'=>ucfirst(__('day_count')),
-			));
-
-			echo $this->Form->input('week_count', array(
-				'label'=>ucfirst(__('week_count')),
-			));
-
-			echo $this->Form->input('month_count', array(
-				'label'=>ucfirst(__('month_count')),
-			));
-
 			echo $this->Form->input('status', array(
 				'label'=>ucfirst(__('status')),
 			));

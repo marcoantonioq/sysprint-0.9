@@ -1,33 +1,16 @@
 
 <div class="row-fluid">
     <div class="span12 well">
-		<?php echo $this->Html->link('Novo '.__('group'),
+      <?php echo $this->Html->link('Voltar ',
+  				array('controller' => 'users', 'action' => 'index'),
+  				array('class'=> 'btn')
+  			)." ";
+
+		  echo $this->Html->link('Novo ',
 				array('controller' => 'groups', 'action' => 'add'),
 				array('class'=> 'btn btn-success')
 			)." ";
-
-			echo $this->Html->link('Menu', '#',
-				array('class'=> 'btn btn-info','id'=>'btnmenu')
-			);
-
 		?>
-		<div id="rowmenus" class="row-fluid">
-			<br>
-			    <?php echo $this->Html->link('Novo '.__('group'),
-						array('controller' => 'groups', 'action' => 'add'),
-						array('class'=> 'btn btn-block btn-success')
-					);
-			    ?>
-
-
-					<?php
-					echo $this->Html->link(__('Users'),
-						array('controller' => 'users', 'action' => 'index'),
-						array('class'=> 'btn btn-block')
-					);
-					?>
-
-		</div>
 	</div>
 </div>
 

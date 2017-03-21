@@ -86,7 +86,6 @@ class ADBehavior extends ModelBehavior {
   				$users[$key]['User']['thumbnailphoto'] = "data:image/jpeg;base64," . base64_encode($userAD['0']['thumbnailphoto']['0']);
   			}
         if (!empty($userAD['0']['memberof']['count']) && $userAD['0']['memberof']['count'] >= 1) {
-          // pr($userAD['0']['memberof']);
           foreach ($userAD['0']['memberof'] as $group) {
             foreach (explode(',',$group) as $CNs) {
               $cn=explode('=',$CNs);

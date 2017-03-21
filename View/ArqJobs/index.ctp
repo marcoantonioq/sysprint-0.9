@@ -1,30 +1,16 @@
 
 <div class="row-fluid">
     <div class="span12 well">
-		<?php echo $this->Html->link('Novo '.__('arqJob'),
-				array('controller' => 'arqJobs', 'action' => 'add'),
+		<?php echo $this->Html->link('Voltar ',
+				array('controller' => 'jobs', 'action' => 'index'),
 				array('class'=> 'btn btn-success')
 			)." ";
-
-			echo $this->Html->link('Menu', '#',
-				array('class'=> 'btn btn-info','id'=>'btnmenu')
-			);
-
-		?> 
-		<div id="rowmenus" class="row-fluid">
-			<br>
-			    <?php echo $this->Html->link('Novo '.__('arqJob'),
-						array('controller' => 'arqJobs', 'action' => 'add'),
-						array('class'=> 'btn btn-block btn-success')
-					);
-			    ?> 
-		    			
-		</div>
+		?>
 	</div>
 </div>
 
 <div class="row-fluid">
-	<div class="span12">		
+	<div class="span12">
 
 	<div class="tabela">
 		<table class='rwd-table'>
@@ -33,117 +19,116 @@
 				<th class="btnFilter">
 					<?php $this->Filter->img(); ?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('id', ucfirst(__('id'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('id', ucfirst(__('id')));
+					?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('user', ucfirst(__('user'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('user', ucfirst(__('user')));
+					?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('printer', ucfirst(__('printer'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('printer', ucfirst(__('printer')));
+					?>
 				</th>
-												
+
+				<th class="hide">>
+					<?php
+						echo $this->Paginator->sort('date', ucfirst(__('date')));
+					?>
+				</th>
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('date', ucfirst(__('date'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('pages', ucfirst(__('pages')));
+					?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('pages', ucfirst(__('pages'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('copies', ucfirst(__('copies')));
+					?>
 				</th>
-												
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('copies', ucfirst(__('copies'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('host', ucfirst(__('host')));
+					?>
 				</th>
-												
+
+				<th class="hide">
+					<?php
+						echo $this->Paginator->sort('file', ucfirst(__('file')));
+					?>
+				</th>
+
+				<th class="hide">
+					<?php
+						echo $this->Paginator->sort('params', ucfirst(__('params')));
+					?>
+				</th>
+
+				<th class="hide">
+					<?php
+						echo $this->Paginator->sort('status', ucfirst(__('status')));
+					?>
+				</th>
+
 				<th>
-					<?php 
-						echo $this->Paginator->sort('host', ucfirst(__('host'))); 
-					?>				
+					<?php
+						echo $this->Paginator->sort('created', ucfirst(__('created')));
+					?>
 				</th>
-												
-				<th>
-					<?php 
-						echo $this->Paginator->sort('file', ucfirst(__('file'))); 
-					?>				
+
+				<th class="hide">
+					<?php
+						echo $this->Paginator->sort('updated', ucfirst(__('updated')));
+					?>
 				</th>
-												
-				<th>
-					<?php 
-						echo $this->Paginator->sort('params', ucfirst(__('params'))); 
-					?>				
-				</th>
-												
-				<th>
-					<?php 
-						echo $this->Paginator->sort('status', ucfirst(__('status'))); 
-					?>				
-				</th>
-												
-				<th>
-					<?php 
-						echo $this->Paginator->sort('created', ucfirst(__('created'))); 
-					?>				
-				</th>
-												
-				<th>
-					<?php 
-						echo $this->Paginator->sort('updated', ucfirst(__('updated'))); 
-					?>				
-				</th>
-				
-				<th class="actions">
-					<?php echo->limit( ); ?>				</th>
+
+				<th class="actions"></th>
 			</tr>
 			<tr id="filter">
 				<td>
-					<?php echo $this->Form->checkbox('all.row', array( 'id'=>'allrow' ));?>					
+					<?php echo $this->Form->checkbox('all.row', array( 'id'=>'allrow' ));?>
 				</td>
-									
+
 					<?php echo $this->Filter->conditions('id'); ?>
-									
+
 					<?php echo $this->Filter->conditions('user'); ?>
-									
+
 					<?php echo $this->Filter->conditions('printer'); ?>
-									
+
 					<?php echo $this->Filter->conditions('date'); ?>
-									
+
 					<?php echo $this->Filter->conditions('pages'); ?>
-									
+
 					<?php echo $this->Filter->conditions('copies'); ?>
-									
+
 					<?php echo $this->Filter->conditions('host'); ?>
-									
+
 					<?php echo $this->Filter->conditions('file'); ?>
-									
+
 					<?php echo $this->Filter->conditions('params'); ?>
-									
+
 					<?php echo $this->Filter->conditions('status'); ?>
-									
+
 					<?php echo $this->Filter->conditions('created'); ?>
-									
+
 					<?php echo $this->Filter->conditions('updated'); ?>
-								
+
 				<td>
-					<?php 
+					<?php
 						echo  $this->Form->button('Buscar', array(
 							'class'=>'btn btn-success',
 							'style'=>'margin-bottom: 10px;'
-						)); 
+						));
 
 						echo $this->Html->link('Limpar',
 							array('action'=>'index'),
@@ -223,11 +208,11 @@
 		</td>
 
 			<td data-th='Ações' class="actions">
-				
-				<?php 
-				echo $this->Html->link('<span class="icon12 brocco-icon-search"></span>', 
+
+				<?php
+				echo $this->Html->link('<span class="icon12 brocco-icon-search"></span>',
 					array(
-						'action' => 'view', 
+						'action' => 'view',
 						$arqJob['ArqJob']['id']
 					),
 					array(
@@ -235,12 +220,12 @@
 						'title'=>'Visualizar',
 						'class'=>'view',
 					)
-				); ?>				
-				
-				<?php 
-				echo $this->Html->link('<span class="icon12 brocco-icon-pencil"></span>', 
+				); ?>
+
+				<?php
+				echo $this->Html->link('<span class="icon12 brocco-icon-pencil"></span>',
 					array(
-						'action' => 'edit', 
+						'action' => 'edit',
 						$arqJob['ArqJob']['id']
 					),
 					array(
@@ -251,7 +236,7 @@
 				); ?>
 			</td>
 
-	
+
 	</tr>
 
 	<?php endforeach; ?>
@@ -260,7 +245,7 @@
 
 
 	<?php echo $this->element('layout/pagination'); ?>
-    
+
 	<?php echo $this->Form->end(); ?>
 	</div>
 </div>

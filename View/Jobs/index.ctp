@@ -2,7 +2,7 @@
 <div class="row-fluid">
 
 	<div class="span12 well">
-		<?php 
+		<?php
 		echo $this->Html->link('Imprimir relatório',
 			"#",
 			array(
@@ -12,27 +12,32 @@
 			)." ";
 		echo $this->Html->link('Usuários',
 			array('controller' => 'jobs', 'action' => 'users'),
-			array('class'=> 'btn btn-success')
-			);
+			array('class'=> 'btn')
+			)." ";
 
-			?> 
+			echo $this->Html->link('Arquivados',
+				array('controller' => 'arq_jobs', 'action' => 'index'),
+				array('class'=> 'btn')
+				)." ";
+
+			?>
 	</div>
 </div>
 
-	<?php 
-		echo $this->Form->create('Filter'); 
+	<?php
+		echo $this->Form->create('Filter');
 		$this->Form->inputDefaults(array(
 			'label'=>false,
 			'div'=>false,
 			'class'=>'span6',
 			'autocomplete'=>'off',
 			'onfocus'=>'this.select();',
-		)); 
+		));
 	?>
 
 	<h3 class="print center">Relatorio de impressão</h3>
 
-	
+
 
 	<div class="tabbable tabs-left ">
 		<ul class="nav nav-tabs">
@@ -42,12 +47,12 @@
 		</ul>
 		<div class="tab-content">
 			<div class="tab-pane active" id="tab1">
-				
+
 				<div class="plugin">
 
 					<canvas id="myChartAnaul" ></canvas>
 
-					<?php 
+					<?php
 					$month = array();
 					$total = array();
 					$mes = array('', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro');
@@ -70,17 +75,17 @@
 					// pr($dataSet);
 					?>
 
-					
+
 						<summary>Resumo</summary>
 						<table>
-							<tr>								
+							<tr>
 								<th>Mês</th>
 								<th>Total</th>
-							</tr>							
+							</tr>
 							<?php foreach ($data['labels'] as $id => $value): ?>
 							<tr>
 								<td><?php echo $value; ?></td>
-								<td><?php echo number_format($data['datasets'][0]['data'][$id],0,",","."); ?> páginas</td> 
+								<td><?php echo number_format($data['datasets'][0]['data'][$id],0,",","."); ?> páginas</td>
 							</tr>
 							<?php endforeach; ?>
 						</table>
@@ -97,12 +102,12 @@
 				</div>
 			</div>
 
-			<div class="tab-pane" id="tab2">      
+			<div class="tab-pane" id="tab2">
 				<div class="plugin">
 
 					<canvas id="myChartPrinter" ></canvas>
 
-					<?php 
+					<?php
 					$printers = array();
 					$total = array();
 					foreach ($charts_printer as $charts) {
@@ -130,14 +135,14 @@
 
 						<summary>Resumo</summary>
 						<table>
-							<tr>								
+							<tr>
 								<th>Impressora</th>
 								<th>Total</th>
-							</tr>							
+							</tr>
 							<?php foreach ($data['labels'] as $id => $value): ?>
 							<tr>
 								<td><?php echo $value; ?></td>
-								<td><?php echo number_format($data['datasets'][0]['data'][$id],0,",","."); ?> páginas</td> 
+								<td><?php echo number_format($data['datasets'][0]['data'][$id],0,",","."); ?> páginas</td>
 							</tr>
 							<?php endforeach; ?>
 						</table>
@@ -154,11 +159,11 @@
 				</div>
 			</div>
 
-			<div class="tab-pane" id="tab3">      
+			<div class="tab-pane" id="tab3">
 				<div class="plugin">
 					<canvas id="myChartUsers" ></canvas>
 
-					<?php 
+					<?php
 					$users = array();
 					$total = array();
 					foreach ($charts_users as $user) {
@@ -182,21 +187,21 @@
 					// pr($dataSet);
 					?>
 
-					
+
 						<summary>Resumo</summary>
 						<table>
-							<tr>								
+							<tr>
 								<th>Usuário</th>
 								<th>Total</th>
-							</tr>							
+							</tr>
 							<?php foreach ($data['labels'] as $id => $value): ?>
 							<tr>
 								<td><?php echo $value; ?></td>
-								<td><?php echo number_format($data['datasets'][0]['data'][$id],0,",","."); ?> páginas</td> 
+								<td><?php echo number_format($data['datasets'][0]['data'][$id],0,",","."); ?> páginas</td>
 							</tr>
 							<?php endforeach; ?>
 						</table>
-					
+
 
 					<script type="text/javascript">
 
@@ -212,13 +217,13 @@
 
 		</div>
 	</div>
-	
+
 	<table class='table rwd-table no-print'>
 		<thead>
 			<tr>
 				<th class="btnFilter">
 					Selecionar
-				</th>				
+				</th>
 
 				<th class="">
 					<?php
@@ -252,7 +257,7 @@
 					<?php //echo $this->Filter->limit( ); ?>
 					Ações
 				</th>
-<!-- 
+<!--
 				<th>
 					<?php
 					echo $this->Paginator->sort('pages', ucfirst(__('pages')));
@@ -279,11 +284,10 @@
 			</tr>
 
 			<tr>
-				<td class="center">
-					<br>Todos <br>
-					<?php echo $this->Form->checkbox('all.row', array('checked'=>'', 'id'=>'allrow' ));?>					
+				<td class="actions">
+							<?php echo $this->Filter->limit( ); ?>
 				</td>
-				
+
 					<?php echo $this->Filter->conditions('id'); ?>
 
 					<?php echo $this->Filter->conditions('User.name'); ?>
@@ -325,19 +329,18 @@
 			</tr>
 		</thead>
 	</table>
-	
+
 	<details>
 		<summary> + Detalhes</summary>
-		
+
 			<table class='table rwd-table'>
 			<thead>
 			<tr>
-				
-				<th class="actions">
-					<?php echo $this->Filter->limit( ); ?>
+				<th>
+					Todos <br>
+					<?php echo $this->Form->checkbox('all.row', array('checked'=>'', 'id'=>'allrow' ));?>
 				</th>
 
-				
 				<th class="">
 					<?php
 					echo $this->Paginator->sort('id', ucfirst(__('Job')));
@@ -394,7 +397,7 @@
 			</thead>
 
 
-				<?php 
+				<?php
 					foreach ($jobs as $job):
 					if ( !isset($job['Job']['id'])) { continue; }
 				?>
@@ -405,7 +408,7 @@
 					</td>
 
 					<td data-th="<?php echo ucfirst(__('id'));?>" >
-						<?php echo h($job['Job']['id']); ?>
+						<?php echo $this->Html->link(ucfirst($job['Job']['id']), array('action' => 'view', $job['Job']['id'])); ?>
 						&nbsp;
 					</td>
 

@@ -4,8 +4,7 @@ php=$(command -v php);
 
 echo "reloadLog";
 ps aux | grep "reloadLog" | grep -v grep ||
-$php $ROOT_APP/Console/cake.php printer reloadLog &&
-echo ""> /var/log/cups/page_log;
+$php $ROOT_APP/Console/cake.php printer reloadLog
 sleep 1;
 
 echo "setPrivilege";

@@ -1,5 +1,7 @@
 <div class="row-fluid">
-<?php pr($user['User']); ?>
+<?php
+	// pr($user['User']);
+?>
 
 	<div class='span8'>
 	    <dl>
@@ -31,6 +33,11 @@
 			<dt><?php echo ucfirst(__('quota')); ?></dt>
             <dd>
                 <?php echo h($user['User']['quota']); ?>
+                &nbsp;
+            </dd>
+			<dt><?php echo ucfirst(__('month_count')); ?></dt>
+            <dd>
+                <?php echo h($user['User']['month_count']); ?>
                 &nbsp;
             </dd>
 			<dt><?php echo ucfirst(__('created')); ?></dt>

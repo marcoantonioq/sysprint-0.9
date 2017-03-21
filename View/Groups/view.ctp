@@ -82,8 +82,6 @@
 		<th><?php echo ucfirst(__('password')); ?></th>
 		<th><?php echo ucfirst(__('email')); ?></th>
 		<th><?php echo ucfirst(__('quota')); ?></th>
-		<th><?php echo ucfirst(__('day_count')); ?></th>
-		<th><?php echo ucfirst(__('week_count')); ?></th>
 		<th><?php echo ucfirst(__('month_count')); ?></th>
 		<th><?php echo ucfirst(__('status')); ?></th>
 		<th><?php echo ucfirst(__('job_count')); ?></th>
@@ -99,7 +97,6 @@
 			<td data-th="<?php echo ucfirst(__('password')) ?>" ><?php echo $user['password']; ?></td>
 			<td data-th="<?php echo ucfirst(__('email')) ?>" ><?php echo $user['email']; ?></td>
 			<td data-th="<?php echo ucfirst(__('quota')) ?>" ><?php echo $user['quota']; ?></td>
-			<td data-th="<?php echo ucfirst(__('day_count')) ?>" ><?php echo $user['day_count']; ?></td>
 			<td data-th="<?php echo ucfirst(__('week_count')) ?>" ><?php echo $user['week_count']; ?></td>
 			<td data-th="<?php echo ucfirst(__('month_count')) ?>" ><?php echo $user['month_count']; ?></td>
 			<td data-th="<?php echo ucfirst(__('status')) ?>" ><?php echo $user['status']; ?></td>

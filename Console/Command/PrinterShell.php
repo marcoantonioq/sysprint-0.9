@@ -24,6 +24,7 @@ class PrinterShell extends AppShell {
       $conteudo = $page_log_system->read(); // lê arquivo cups_log
       $page_log_tmp->append($conteudo); // adiciona conteudo em arquivo tmp
       // $page_log_system->delete(); // limpa o cups_log
+      // exec('echo ""> /var/log/cups/page_log');
 
       $page_log_system->close(); // fecha o arquivo
 
@@ -65,12 +66,11 @@ class PrinterShell extends AppShell {
           'file' => "{$job['job-name']}",
           'params' => "{$job['media']} - {$job['media']}"
         ));
-
         if(!$this->Job->save($job)){
           $page_error->append("\n$job_json");
           continue;
         }
-        pr($job);
+        $this->User->updateUsedMonth($user_id);
       }
       $page_log_tmp->delete(); // limpa o cups_log temporario
       $page_log_tmp->close();

@@ -23,6 +23,8 @@ class QuotaShell extends AppShell {
       )
     ));
 
+    pr($prints); exit;
+
     foreach ($prints as $print) {
       // Quota por impressora
       $job_quota_period=(empty( $print['Printer']['job-quota-period'] ) ) ? 0 : $print['Printer']['job-quota-period'];
@@ -31,19 +33,24 @@ class QuotaShell extends AppShell {
 			$cmd = "/usr/sbin/lpadmin -p '{$print['Printer']['name']}' -o job-quota-period={$job_quota_period} -o job-page-limit={$job_page_limit} -o job-k-limit={$job_k_limit}";
 			exec($cmd, $result, $error); pr($cmd);
 
-    	if ($print['Printer']['allow']){
+      // Impressoras Padrão negado para todos usuários
+      $cmd = "/usr/sbin/lpadmin -p {$print['Printer']['name']} -u deny:all";
+      pr($cmd); exec($cmd);
+      if ($print['Printer']['allow']){
     		$cmd = "/usr/sbin/lpadmin -p {$print['Printer']['name']} -u allow:all";
-    		pr($cmd); exec($cmd);
+        pr($cmd); exec($cmd);
     		continue;
     	}
 
-      	// Padrão negado para todos usuários
-    	$cmd = "/usr/sbin/lpadmin -p {$print['Printer']['name']} -u deny:all"; pr($cmd); exec($cmd);
-      	//  get lista de usuários
-    	foreach ( $print['User'] as $user) {
-        // verifica status do usuário
-    		if (!$user['status'])
-    			continue;
+      // Usuários
+
+    	foreach ( $print['User'] as $user)
+      {
+        if ( !$user['status'] )
+          continue;
+          // verifica status do usuário e quota mês
+        if ($user['month_count'] > $user['quota'])
+          continue;
     		$users_allow[] = $user['username'];
     	}
       // se a lista não estiver vazia

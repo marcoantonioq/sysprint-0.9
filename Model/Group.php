@@ -87,7 +87,7 @@ class Group extends AppModel {
 			));
 			$this->create();
 			$this->save($data);
-			echo "Criado: $name: {$this->id}<br>";
+			// pr("Criado: $name: {$this->id}<br>");
 			$group_id = $this->id;
 		}
 		// echo "$name: $group_id<br>";

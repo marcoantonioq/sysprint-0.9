@@ -12,15 +12,15 @@
         "auth": "0"
     },
     "AD": {
-        "conect": "0",
-        "ldap_host": "",
-        "ldap_port": "389",
-        "base_dn": "OU=SYSPRINT",
-        "ldap_user": "",
-        "ldap_pass": "",
-        "suffix": "@sysprint.br",
-        "attr": "name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailphoto",
-        "filter": ""
+      "conect": "1",
+      "ldap_host": "10.11.0.10",
+      "ldap_port": "389",
+      "base_dn": "OU=IFG,DC=ifg,DC=br",
+      "ldap_user": "goiservice",
+      "ldap_pass": "QnJhc2lsMDU=",
+      "suffix": "@ifg.br",
+      "attr": "name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group",
+      "filter": "&(objectClass=user)(!(extensionattribute2=*Aluno*))"
     },
     "EMAIL": {
         "email_notification": "0",

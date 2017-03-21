@@ -27,9 +27,9 @@ class ArqJobsController extends AppController {
  */
 	public function index() {
 		if ($this->request->is('post')) {
-            $this->Paginator->settings = $this->ArqJob->action($this->request->data);
-            echo $this->Session->setFlash('Filtro definido!', 'layout/success');
-        }
+        $this->Paginator->settings = $this->ArqJob->action($this->request->data);
+        echo $this->Session->setFlash('Filtro definido!', 'layout/success');
+    }
 		$this->ArqJob->recursive = 0;
 		$this->set('arqJobs', $this->Paginator->paginate());
 	}
@@ -92,7 +92,7 @@ class ArqJobsController extends AppController {
 			$this->request->data = $this->ArqJob->find('first', $options);
 		}
 	}
-	
+
 
 /**
  * delete method
@@ -108,7 +108,7 @@ class ArqJobsController extends AppController {
 		}
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->ArqJob->delete()) {
-	
+
 			$this->Session->setFlash(__('Foi excluído.'), 'layout/success');
 		} else {
 			$this->Session->setFlash(__('Não foi excluído. Por favor, tente novamente.'), 'layout/error');
