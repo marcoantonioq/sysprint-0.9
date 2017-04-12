@@ -13,14 +13,14 @@
     },
     "AD": {
       "conect": "1",
-      "ldap_host": "10.11.0.10",
+      "ldap_host": "192.168.1.1",
       "ldap_port": "389",
-      "base_dn": "OU=IFG,DC=ifg,DC=br",
-      "ldap_user": "goiservice",
-      "ldap_pass": "QnJhc2lsMDU=",
-      "suffix": "@ifg.br",
+      "base_dn": "OU=XX,DC=xxx,DC=br",
+      "ldap_user": "userAD",
+      "ldap_pass": "passwordAD",
+      "suffix": "@sysprint.br",
       "attr": "name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailphoto,memberof",
-      "filter": "&(objectClass=user)(!(extensionattribute2=*Aluno*))"
+      "filter": "&(objectClass=user)"
     },
     "EMAIL": {
         "email_notification": "0",
@@ -40,7 +40,7 @@
         "datasource": "Database\/Mysql",
         "host": "localhost",
         "login": "root",
-        "password": "c3lzcHJpbnRAMTIz",
+        "password": "",
         "database": "sysprints",
         "persistent": "als",
         "prefix": "",

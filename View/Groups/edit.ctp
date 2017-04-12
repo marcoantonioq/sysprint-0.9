@@ -39,7 +39,7 @@
 			));
 		?>
 		<div class="form-actions form-horizontal">
-			<?php			  echo $this->Form->button('Enviar', array(
+			<?php			  echo $this->Form->button('Aplicar', array(
 				'class'=>'btn btn-info'
 			))." ";
 			echo $this->Form->button('Limpar', array(

@@ -114,6 +114,11 @@ class SpoolsController extends AppController {
 	}
 
 	public function app_add($id = null) {
+		if (!$this->Spool->User->exists($this->Session->read('Auth.User.id'))) {
+			$this->Session->setFlash("Usuário não encontrado!", 'layout/success');
+			return $this->redirect(array('controller'=>'users', 'action' => 'login'));
+		}
+
 		if ($this->request->is('post')) {
 			$message = $this->Spool->sendPrint($this->request->data);
 			$this->Session->setFlash($message, 'layout/success');
@@ -140,9 +145,6 @@ class SpoolsController extends AppController {
 		if ( !empty($id) ) {
 			$options['conditions'] += array('AND' => array("Printer.id"=>$id));
 		}
-
-
-
 		$users = $this->Spool->User->find('list', array('conditions'=>array("User.id"=>$this->Session->read('Auth.User.id'))));
 		$printers = $this->Spool->Printer->find('list', $options);
 		$this->set(compact('users', 'printers'));

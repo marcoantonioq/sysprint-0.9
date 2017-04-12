@@ -120,9 +120,7 @@ class UsersController extends AppController {
 				));
 				if ($this->SYSApp->auth) {
 					$user = $this->User->sycAD(array('0'=>$user));
-					pr($user);
 				}
-				// pr($this->request->data); exit;
 
 				$this->Session->setFlash(__('Foi salvo.'), 'layout/success');
 				return $this->redirect(array('action' => 'index'));
@@ -142,6 +140,9 @@ class UsersController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->User->save($this->request->data)) {
+				if ($this->SYSApp->auth) {
+					$this->User->sycAD(['0'=>$this->request->data]);
+				}
 				$this->Session->setFlash(__('Foi salvo.'), 'layout/success');
 				return $this->redirect(array('action' => 'index'));
 			} else {

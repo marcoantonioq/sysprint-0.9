@@ -83,6 +83,10 @@ class User extends AppModel {
 
 	public function beforeSave($options = array())
 	{
+		if (empty($this->data['User']['name'])) {
+			$this->data['User']['name'] = $this->data['User']['username'];			
+		}
+
 		if (isset($this->data['User']['password'])) {
 			$this->data['User']['password'] = Security::hash($this->data['User']['password'], null, true);
 		}

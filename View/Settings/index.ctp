@@ -141,7 +141,7 @@
       // 'value'=>'name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailphoto',
 			'title'=>ucfirst(__('attr')),
 		));
-    echo "<i>Ex: name, displayname, mail, mobile, homephone, telephonenumber, streetaddress, postalcode, physicaldeliveryofficename, l, group, thumbnailphoto, memberof</i>";
+    echo "<i>Ex: name,displayname,mail,mobile,homephone,telephonenumber,streetaddress,postalcode,physicaldeliveryofficename,l,group,thumbnailphoto,memberof</i>";
     echo $this->Form->input('AD.filter', array(
       'placeholder'=>ucfirst(__('filter')),
 			'title'=>ucfirst(__('filter')),

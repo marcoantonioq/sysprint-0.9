@@ -74,35 +74,36 @@ class ADBehavior extends ModelBehavior {
 				continue;
   		$users[$key]['User']['name'] = $user['User']['username'];
 			$userAD = $this->getUser($user['User']['username']);
-      try {
+      // pr($userAD);
 
-  			if (!empty($userAD['0']['displayname']['0']))
-          	$users[$key]['User']['name'] = $userAD['0']['displayname']['0'];
-  			if (!empty($userAD['0']['mail']['0']))
-  				$users[$key]['User']['email'] = $userAD['0']['mail']['0'];
-  			if (!empty($userAD['0']['thumbnailphoto']['0'])) {
-  				$finfo = new finfo(FILEINFO_MIME_TYPE);
-  				$mime = explode(';', $finfo->buffer($userAD['0']['thumbnailphoto']['0']));
-  				$users[$key]['User']['thumbnailphoto'] = "data:image/jpeg;base64," . base64_encode($userAD['0']['thumbnailphoto']['0']);
-  			}
+      try {
+  			@$users[$key]['User']['name'] = $userAD['0']['displayname']['0'];
+  			@$users[$key]['User']['email'] = $userAD['0']['mail']['0'];
+
+        $users[$key]['User']['thumbnailphoto'] = null;
+        if ( !empty($userAD['0']['thumbnailphoto']['0']) ) {
+          $finfo = new finfo(FILEINFO_MIME_TYPE);
+          @$mime = explode(';', $finfo->buffer($userAD['0']['thumbnailphoto']['0']));
+          @$users[$key]['User']['thumbnailphoto'] = "data:image/jpeg;base64," . base64_encode($userAD['0']['thumbnailphoto']['0']);
+        }
+
         if (!empty($userAD['0']['memberof']['count']) && $userAD['0']['memberof']['count'] >= 1) {
           foreach ($userAD['0']['memberof'] as $group) {
             foreach (explode(',',$group) as $CNs) {
               $cn=explode('=',$CNs);
               if($cn[0]=="CN"){
-                $users[$key]['Group']['Group'][]=$Model->Group->get_ID($cn[1]);
+                @$users[$key]['Group']['Group'][]=$Model->Group->get_ID($cn[1]);
               }
             }
           }
         }
       } catch (Exception $e) {}
 		}
+    // pr($users); exit;
 		foreach ($users as $key => $user) {
 			unset($user["User"]["status"]);
       unset($user["User"]["password"]);
-      try {
-        $Model->save($user);
-      } catch (Exception $e) {}
+      @$Model->save($user);
 		}
 		return $users;
 	}

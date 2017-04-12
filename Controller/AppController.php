@@ -61,7 +61,7 @@ class AppController extends Controller {
             $this->layout='ajax';
         }
 
-        if( $this->SYSApp->debug ){
+        if( $this->SYSApp->debug){
             Configure::write('debug',2);
         }
 

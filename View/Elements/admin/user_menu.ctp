@@ -4,7 +4,7 @@
 			array('class'=>'app pulse')
 		);
 	 ?>
-	
+
 	<?php echo $this->Html->link( $this->Html->image("/img/icons/print.png"),
 		array('controller'=>'printers'),
 		array(
@@ -16,8 +16,7 @@
 
 
 		<?php
-			$user =  $this->Session->read('Auth.User');
-			
+			$user =  $this->Session->read('Auth');
 			echo  $this->Html->link(
 				$this->Html->image("/img/icons/control_panel.png"),
 				array(
